@@ -248,8 +248,13 @@
     if (!settingKey) return;
 
     const settingDef = state.data.settings?.settings?.[settingKey];
-    const entities = state.data.placements?.[settingKey]?.[screenId];
-    if (!Array.isArray(entities)) return;
+    const entities = resolveSceneEntities(settingKey, screenId);
+    if (!Array.isArray(entities)) {
+      console.warn(
+        `[placement] No valid entity array for setting="${settingKey}", screen="${screenId}".`
+      );
+      return;
+    }
 
     const used = new Set();
 
@@ -259,6 +264,42 @@
       used.add(`${pos.x},${pos.y}`);
       drawSprite(entity.sprite, pos, settingDef?.grid_size, entity.id || 'entity');
     });
+  }
+
+  function resolveSceneEntities(settingKey, screenId) {
+    const placements = state.data.placements || {};
+    const candidates = [
+      {
+        label: 'placements[settingKey][screenId]',
+        value: placements?.[settingKey]?.[screenId]
+      },
+      {
+        label: 'placements[screenId]',
+        value: placements?.[screenId]
+      },
+      {
+        label: 'placements[settingKey].screens[screenId]',
+        value: placements?.[settingKey]?.screens?.[screenId]
+      },
+      {
+        label: 'placements[settingKey].placements[screenId]',
+        value: placements?.[settingKey]?.placements?.[screenId]
+      }
+    ];
+
+    for (const candidate of candidates) {
+      if (Array.isArray(candidate.value)) {
+        console.warn(
+          `[placement] Resolved entities via ${candidate.label} for setting="${settingKey}", screen="${screenId}".`
+        );
+        return candidate.value;
+      }
+      console.warn(
+        `[placement] Lookup miss: ${candidate.label} for setting="${settingKey}", screen="${screenId}".`
+      );
+    }
+
+    return null;
   }
 
   function renderEndingSprites(screenId) {
