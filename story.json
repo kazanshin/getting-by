@@ -1,13 +1,13 @@
 {
   "S01": {
     "type": "story",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "First week of high school. The hallway is loud and everyone seems to already know where they're going. A group nearby is talking about the weekend — someone's older brother is driving them to Costco to stock up for a party. You smile like you're listening.",
     "next": "S02"
   },
   "S02": {
     "type": "dilemma",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "Your teacher passes around a sign-up sheet for a three-day trip to Algonquin. It's $180. She says deposits are due by Friday. The sheet reaches your desk.",
     "choices": [
       {
@@ -30,25 +30,25 @@
   },
   "S03A": {
     "type": "consequence",
-    "image": "home_kitchen.png",
+    "image": "/graphics/settings/home_kitchen.png",
     "text": "Your mom sets down her fork and doesn't say anything for a second. She says she'll figure it out. Later you hear her on the phone with your aunt. She sounds tired.",
     "next": "S04"
   },
   "S03B": {
     "type": "consequence",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "Monday after the trip, the hallway is full of inside jokes you don't have context for. Someone shows a video on their phone and everyone crowds in. You head to your locker.",
     "next": "S04"
   },
   "S04": {
   "type": "story",
-  "image": "cafeteria.png",
+  "image": "/graphics/settings/school_cafeteria.png",
   "text": "Lunch is unpredictable. Some days there's a few dollars, some days there isn't. You've started sitting at the end of the table near the wall. A girl two seats down has a North Face jacket hanging on her chair. Yours is a zip-up from Value Village that you've had since Grade 6. Nobody says anything. You just notice that they notice.",
   "next": "S05"
 },
   "S05": {
     "type": "dilemma",
-    "image": "cafeteria.png",
+    "image": "/graphics/settings/school_cafeteria.png",
     "text": "You're standing at the till with a sandwich and chips. You're $2.40 short. The line is backing up behind you. The cashier is waiting.",
     "choices": [
       {
@@ -71,25 +71,25 @@
   },
   "S06A": {
     "type": "consequence",
-    "image": "cafeteria.png",
+    "image": "/graphics/settings/school_cafeteria.png",
     "text": "You eat half the sandwich slowly, trying to make it feel like enough. A girl from your English class sits across from you and starts talking. You nod along, stomach still empty.",
     "next": "S07"
   },
   "S06B": {
     "type": "consequence",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "You drink from the water fountain by the gym and sit through afternoon classes lightheaded. You copy down notes but none of it sticks.",
     "next": "S07"
   },
   "S07": {
     "type": "story",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "You've missed three homework submissions in the last two weeks. It's not that you don't get it — there just isn't a good time or place to do it. The kitchen table has bills on it most nights.",
     "next": "S08"
   },
   "S08": {
     "type": "dilemma",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "Your English teacher keeps you after class. She asks directly — is everything okay at home? She's not unkind about it. She's waiting for an answer.",
     "choices": [
       {
@@ -112,25 +112,25 @@
   },
   "S09A": {
     "type": "consequence",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "She listens without interrupting. She tells you about a quiet room you can use after school and says she'll give you extensions when you need them. Walking out you feel lighter — and a little exposed.",
     "next": "S10"
   },
   "S09B": {
     "type": "consequence",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "She nods and lets you go. Two weeks later she stops checking in. Unbeknownst to you, your name comes up in a staff meeting as a student who isn't trying.",
     "next": "S10"
   },
   "S10": {
     "type": "story",
-    "image": "street_outside_school.png",
+    "image": "/graphics/settings/school_outside.png",
     "text": "The 3:30 bell means different things to different people. For most of your class it means clubs, practice, or going to a friend's place. For you it usually means getting home to watch your brother until your mom finishes her second shift.",
     "next": "S11"
   },
   "S11": {
     "type": "dilemma",
-    "image": "street_outside_school.png",
+    "image": "/graphics/settings/school_outside.png",
     "text": "Your math teacher runs a homework help session every Tuesday until 4:30. Your brother gets out of his school at 3:45 and nobody else is home until six.",
     "choices": [
       {
@@ -153,31 +153,31 @@
   },
   "S12A": {
     "type": "consequence",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "Your math marks start to stabilize. Your mom arranges something with a neighbour for Tuesdays, but she doesn't sound happy about it. She doesn't bring it up again, but it sits there.",
     "next": "S13"
   },
   "S12B": {
     "type": "consequence",
-    "image": "home_kitchen.png",
+    "image": "/graphics/settings/home_kitchen.png",
     "text": "Your brother is watching TV when you get in. You make him a snack and start on dishes. By the time your mom gets home you haven't opened your backpack.",
     "next": "S13"
   },
   "S13": {
     "type": "story",
-    "image": "home_bedroom.png",
+    "image": "/graphics/settings/home_bedroom.png",
     "text": "Grade 9 is almost done. Nothing collapsed, but nothing felt easy either. Every week had a moment where something had to give — school, home, money, or just your own energy. You're already tired and it's only been one year.",
     "next": "S14"
   },
   "S14": {
     "type": "story",
-    "image": "street_outside_school.png",
+    "image": "/graphics/settings/school_outside.png",
     "text": "Grade 10. A friend from last year texts you on a Thursday — her older cousin is having people over, no parents, come through after school. You haven't had a reason to go anywhere in a while. You show up. There's music, someone's already laughing too loud, and a bottle of Canadian Club is sitting open on the counter.",
     "next": "S15"
   },
   "S15": {
     "type": "dilemma",
-    "image": "party_house.png",
+    "image": "/graphics/settings/party_house.png",
     "text": "Someone presses a cup into your hand like it's already decided. Everyone around you is relaxed. Nobody's watching you specifically — but you notice that.",
     "choices": [
       {
@@ -200,25 +200,25 @@
   },
   "S16A": {
     "type": "consequence",
-    "image": "party_house.png",
+    "image": "/graphics/settings/party_house.png",
     "text": "The night gets easier after the first one. You're part of the conversation, people are including you in plans. You get home after midnight smelling like someone else's basement. Your mom is already asleep.",
     "next": "S17"
   },
   "S16B": {
     "type": "consequence",
-    "image": "street_outside_school.png",
+    "image": "/graphics/settings/school_outside.png",
     "text": "You leave around nine. The walk home is quiet. When the group chat goes active later that night you're not in it — you don't know when that happened.",
     "next": "S17"
   },
   "S17": {
     "type": "story",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "Your history teacher pulls you aside after class. She says you have good instincts and she wants to put your name forward for the student leadership council. Meetings are Wednesdays after school — same shift you picked up at No Frills two months ago.",
     "next": "S18"
   },
   "S18": {
     "type": "dilemma",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "The teacher is waiting for an answer. The leadership spot could open doors. The No Frills shift is $13.40 an hour and you've already told your mom what you'd be bringing in.",
     "choices": [
       {
@@ -241,25 +241,25 @@
   },
   "S19A": {
     "type": "consequence",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "The council is mostly kids whose parents drive them home after. You like some of them. You also pick up fewer shifts and start doing the math on what you're not bringing in.",
     "next": "S20"
   },
   "S19B": {
     "type": "consequence",
-    "image": "workplace.png",
+    "image": "/graphics/settings/workplace.png",
     "text": "You keep the shift. The teacher doesn't ask again. At work you're stacking yogurt and thinking about nothing in particular, which is its own kind of relief.",
     "next": "S20"
   },
 "S20": {
   "type": "story",
-  "image": "home_kitchen.png",
+  "image": "/graphics/settings/home_kitchen.png",
   "text": "You come home and there's a letter on the counter from Ontario Works. It's open, face up. Your mom doesn't mention it when she gets in. She makes dinner and asks about your week. Later she knocks on your door and asks if you can start putting in a regular amount each month.",
   "next": "S21"
 },
   "S21": {
     "type": "dilemma",
-    "image": "home_kitchen.png",
+    "image": "/graphics/settings/home_kitchen.png",
     "text": "She's not asking for everything. But what she's describing would leave you about $40 a month for transit, food at school, and anything else that comes up.",
     "choices": [
       {
@@ -282,25 +282,25 @@
   },
   "S22A": {
     "type": "consequence",
-    "image": "home_kitchen.png",
+    "image": "/graphics/settings/home_kitchen.png",
     "text": "Things at home feel steadier for a few weeks. You start skipping lunch some days because the money isn't there. You don't tell anyone.",
     "next": "S23"
   },
   "S22B": {
     "type": "consequence",
-    "image": "home_bedroom.png",
+    "image": "/graphics/settings/home_bedroom.png",
     "text": "Your mom doesn't argue but she goes quiet. The next few days she answers you in short sentences. You know what you kept the money for was reasonable. It doesn't feel that way.",
     "next": "S23"
   },
   "S23": {
     "type": "story",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "Your group project is due in ten days. Everyone agrees to share a Google Doc and meet on a call Sunday night. Sunday night you're covering someone's shift. The wifi at home cuts out twice before nine.",
     "next": "S24"
   },
   "S24": {
     "type": "dilemma",
-    "image": "home_bedroom.png",
+    "image": "/graphics/settings/home_bedroom.png",
     "text": "You managed to add two paragraphs before losing connection. The rest of the group kept going without you. There's a message in the chat asking where you were.",
     "choices": [
       {
@@ -323,31 +323,31 @@
   },
   "S25A": {
     "type": "consequence",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "One person in the group is understanding. Another one isn't — you can tell by the way she responds in class the next day. The project gets submitted but your section is thin and everyone knows it.",
     "next": "S26"
   },
   "S25B": {
     "type": "consequence",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "The group submits without your full section. The teacher pulls you aside and asks if there's a reason you didn't contribute. You say you did what you could. She marks it as incomplete.",
     "next": "S26"
   },
   "S26": {
     "type": "story",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "Grade 10 is wrapping up. You have a job, which is more than most people your age. You also have less time, less sleep, and a smaller margin for anything going wrong. The decisions feel bigger now, like there's less room to recover from them.",
     "next": "S27"
   },
   "S27": {
     "type": "story",
-    "image": "guidance_counselor_office.png",
+    "image": "/graphics/settings/school_counselors_office.png",
     "text": "Grade 11. Your guidance counselor pulls up your transcript on her monitor and turns it toward you. She walks through what's still open and what's already closed. Some of it you knew. Some of it you didn't. She says this year is the one that matters most for what comes after.",
     "next": "S28"
   },
   "S28": {
     "type": "dilemma",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "Your chemistry marks have been slipping. There's a teacher-led review session after school on Fridays. Your shift at No Frills starts at four.",
     "choices": [
       {
@@ -370,25 +370,25 @@
   },
   "S29A": {
     "type": "consequence",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "Your chemistry mark comes back up enough to keep your options open. Your supervisor at No Frills gives you a look when you come in late two Fridays in a row. She doesn't say anything yet.",
     "next": "S30"
   },
   "S29B": {
     "type": "consequence",
-    "image": "workplace.png",
+    "image": "/graphics/settings/workplace.png",
     "text": "You make every shift on time. Your chemistry mark drops below the threshold for a few university programs. You don't find that out until later.",
     "next": "S30"
   },
   "S30": {
     "type": "story",
-    "image": "street_outside_school.png",
+    "image": "/graphics/settings/school_outside.png",
     "text": "Someone you know from the neighborhood — not a close friend, just someone who's always around — tells you he's been making good money. Delivering packages for someone, no questions asked, cash same day. He says it's easy and nobody bothers you.",
     "next": "S31"
   },
   "S31": {
     "type": "dilemma",
-    "image": "street_outside_school.png",
+    "image": "/graphics/settings/school_outside.png",
     "text": "He shows you what he made last week on his phone. It's more than you make in a month at No Frills. Your mom's hydro is two months behind.",
     "choices": [
       {
@@ -411,31 +411,31 @@
   },
   "S32A": {
     "type": "consequence",
-    "image": "street_outside_school.png",
+    "image": "/graphics/settings/school_outside.png",
     "text": "The money is real and it comes fast. You pay the hydro and have some left over. Three weeks in, a guy you've never seen before is suddenly very aware of where you go after school.",
     "next": "S33"
   },
   "S32B": {
     "type": "consequence",
-    "image": "home_kitchen.png",
+    "image": "/graphics/settings/home_kitchen.png",
     "text": "You go home and look at the hydro notice on the counter. You put it face down. You pick up an extra shift at No Frills and it covers about half.",
     "next": "S32C"
   },
   "S32C": {
   "type": "story",
-  "image": "leasing_office.png",
+  "image": "/graphics/settings/school_outside.png",
   "text": "Your mom has an appointment at the Ontario Works office and asks you to come. The waiting room has plastic chairs and a number system. When they're called, a caseworker explains that a form wasn't submitted on time and the next payment will be delayed two weeks. Your mom asks two sharp questions, gets the information she needs, and writes something down. On the bus home she looks out the window. You don't ask what she's thinking.",
   "next": "S33"
 },
   "S33": {
     "type": "story",
-    "image": "leasing_office.png",
+    "image": "/graphics/settings/home_kitchen.png",
     "text": "You haven't had a full night's sleep in three weeks. There are four assignments sitting in your bag that you haven't started. You got through the day on a gas station coffee and whatever was left in the cupboard this morning.",
     "next": "S34"
   },
   "S34": {
     "type": "dilemma",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "You've missed enough that your attendance is flagged. The office sends a letter home. Your teacher pulls you aside and says if you miss one more class this month you'll be removed from the course.",
     "choices": [
       {
@@ -459,25 +459,25 @@
   },
   "S35A": {
     "type": "consequence",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "You stay in the course. You're exhausted through most of it and your grades aren't great, but you're still in. Your hands shake a little during the mid-term.",
     "next": "S36"
   },
   "S35B": {
     "type": "consequence",
-    "image": "home_bedroom.png",
+    "image": "/graphics/settings/home_bedroom.png",
     "text": "You get removed from the course in the third week. You tell yourself you'll make it up in summer school. You sleep in the next morning and it's the best you've felt in a month.",
     "next": "S36"
   },
   "S36": {
     "type": "story",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "The friend groups have split without anyone announcing it. Some people are talking about university applications and volunteering hours. Others are skipping Tuesdays, showing up late, passing something around near the portables at lunch. You've been somewhere in the middle, but that's starting to feel less possible.",
     "next": "S37"
   },
   "S37": {
     "type": "dilemma",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "The more focused group invites you to a study session at the public library Saturday afternoon. The other group texts you about a party Friday night that'll probably run into Saturday.",
     "choices": [
       {
@@ -500,31 +500,31 @@
   },
   "S38A": {
     "type": "consequence",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "The library group is quiet and focused. One of them explains something about functions you've been stuck on for two weeks. You feel slightly out of place but you stay the whole time.",
     "next": "S39"
   },
   "S38B": {
     "type": "consequence",
-    "image": "party_house.png",
+    "image": "/graphics/settings/party_house.png",
     "text": "Saturday comes and goes. You don't make it to the library. Someone at the party had something stronger than drinks and it went around. You didn't take it but you were there and you know what that means if anything comes of it.",
     "next": "S39"
   },
   "S39": {
     "type": "story",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "Grade 11 is done. Some things are still possible. Some aren't. You can feel the difference between the two even if nobody's said it out loud yet.",
     "next": "S40"
   },
   "S40": {
     "type": "story",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "Grade 12. People around you are talking about moving out, getting serious with someone, making decisions without checking with anyone first. Everything feels closer than it did — graduation, whatever comes after, the gap between where you are and where you thought you'd be by now.",
     "next": "S41"
   },
   "S41": {
     "type": "dilemma",
-    "image": "home_bedroom.png",
+    "image": "/graphics/settings/home_bedroom.png",
     "text": "You and your partner have been together a few months. Things have gotten more serious. You're in the moment and there's no protection in the apartment. He says it'll be fine. You're not sure.",
     "choices": [
       {
@@ -547,25 +547,25 @@
   },
   "S42A": {
     "type": "consequence",
-    "image": "home_bedroom.png",
+    "image": "/graphics/settings/home_bedroom.png",
     "text": "He pulls back and doesn't say much for the rest of the night. Things between you feel different for a few days. You don't regret it but you notice the distance.",
     "next": "S43"
   },
   "S42B": {
     "type": "consequence",
-    "image": "home_bedroom.png",
+    "image": "/graphics/settings/home_bedroom.png",
     "text": "Afterward you lie there doing math in your head. The next two weeks you're checking your phone constantly, waiting for something you can't control.",
     "next": "S43"
   },
 "S43": {
   "type": "story",
-  "image": "home_kitchen.png",
+  "image": "/graphics/settings/home_kitchen.png",
   "text": "You're in the middle of first period when your phone buzzes under the desk. It's your mom. You step into the hall and call back. She's at the leasing office — they're processing a formal notice about missed rent. This isn't the first time something like this has been close. You know the sequence: notice, meeting, extension, scramble. You've watched her navigate it before. This time she wants you there.",
   "next": "S44"
   },
   "S44": {
     "type": "dilemma",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "Your teacher is mid-lesson. Missing this class will be marked unexcused. Your mom's voice on the phone was flat in a way that means she's holding it together barely.",
     "choices": [
       {
@@ -588,25 +588,25 @@
   },
   "S45A": {
     "type": "consequence",
-    "image": "leasing_office.png",
+    "image": "/graphics/settings/leasing_office.png",
     "text": "You sit beside your mom while a property manager explains the notice in a flat, administrative tone. Having you there seems to matter — she asks better questions with you beside her. You get a two-week extension. You also get an unexcused absence that complicates your attendance record.",
     "next": "S46"
   },
   "S45B": {
     "type": "consequence",
-    "image": "classroom.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "You sit through the rest of class and can't follow any of it. Your mom handles it alone and gets the extension, but she doesn't tell you what was said. That night she's quieter than usual.",
     "next": "S46"
   },
   "S46": {
     "type": "story",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "Two weeks before graduation, the office calls you in. You're twelve community service hours short. Without them you can't walk at the ceremony. The only option left is a weekend volunteer shift — same weekend you're scheduled for a full two-day shift at No Frills that you already told your supervisor you'd cover.",
     "next": "S47"
   },
   "S47": {
     "type": "dilemma",
-    "image": "guidance_counselor_office.png",
+    "image": "/graphics/settings/guidance_counselor_office.png",
     "text": "Your supervisor has been flexible with you before. She might not be this time. The volunteer shift doesn't pay. The No Frills shift is two days at your regular rate.",
     "choices": [
       {
@@ -629,25 +629,25 @@
   },
   "S48A": {
     "type": "consequence",
-    "image": "school_hallway.png",
+    "image": "/graphics/settings/school_hallway.png",
     "text": "You clear the hours and you're back on the list to walk. You cover the missed shifts with two extra evenings the following week. It's tight but it works.",
     "next": "S49"
   },
   "S48B": {
     "type": "consequence",
-    "image": "workplace.png",
+    "image": "/graphics/settings/workplace.png",
     "text": "You work both days and make the money. The school sends a letter confirming you won't be walking at graduation. You read it once and put it in a drawer.",
     "next": "S49"
   },
   "S49": {
     "type": "story",
-    "image": "home_kitchen.png",
+    "image": "/graphics/settings/home_kitchen.png",
     "text": "Your mom loses her job three weeks before the end of school. She tells you at the kitchen table, matter-of-factly, like she's already made peace with it. The bills are immediate. There's talk about the apartment. One night she sits you down and says she needs real help — not just some of your pay, but consistent, reliable help. She doesn't say what that means for your plans. She doesn't have to.",
     "next": "S50"
   },
   "S50": {
     "type": "dilemma",
-    "image": "home_kitchen.png",
+    "image": "/graphics/settings/home_kitchen.png",
     "text": "You've been accepted somewhere — a program, a plan, something that requires you to leave or commit fully. Staying means being here, contributing, keeping things from falling apart. Leaving means moving forward, but the apartment situation doesn't get better without you.",
     "choices": [
       {
@@ -670,19 +670,19 @@
   },
   "S51A": {
     "type": "consequence",
-    "image": "home_kitchen.png",
+    "image": "/graphics/settings/home_kitchen.png",
     "text": "Things stabilize slowly. Your mom doesn't say thank you directly but she stops looking so hollowed out. You defer your plans. You tell yourself it's temporary.",
     "next": "S52"
   },
   "S51B": {
     "type": "consequence",
-    "image": "street_outside_school.png",
+    "image": "/graphics/settings/school_outside.png",
     "text": "You pack what you need and leave on a Tuesday. Your mom hugs you at the door and tells you to go. On the bus you check your phone twice to see if she's texted. She hasn't yet.",
     "next": "S52"
   },
   "S52": {
     "type": "story",
-    "image": "street_outside_school.png",
+    "image": "/graphics/settings/school_outside.png",
     "text": "Grade 12 is done. Whatever happens next depends on every small decision that got you here — the shifts you worked, the classes you stayed for, the things you said yes to and the things you didn't. The city looks the same. You're not exactly the same.",
     "next": "ENDING_CHECK"
   },
