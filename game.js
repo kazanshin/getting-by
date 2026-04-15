@@ -248,10 +248,9 @@
     if (!settingKey) return;
 
     const settingDef = state.data.settings?.settings?.[settingKey];
-    const placementScenes = state.data.placements?.[settingKey];
-    if (!placementScenes || typeof placementScenes !== 'object') return;
+    const entities = state.data.placements?.[settingKey]?.[screenId];
+    if (!Array.isArray(entities)) return;
 
-    const entities = Object.values(placementScenes).find((value) => Array.isArray(value)) || [];
     const used = new Set();
 
     entities.forEach((entity) => {
@@ -327,17 +326,55 @@
   }
 
   function validateOrFallbackPosition(x, y, settingDef, used) {
-    const rules = state.data.placementRules?.placement_rules || {};
-    const requireValid = rules.must_be_valid_tile !== false;
-    const noOverlap = rules.no_overlap !== false;
+    const rules = state.data.placementRules || {};
+    const placementRules = rules.placement_rules || {};
+    const zoneRules = rules.zone_rules || {};
+    const priority = Array.isArray(rules.placement_priority)
+      ? rules.placement_priority
+      : ['spawn_points', 'random_valid_tile'];
 
-    const initial = { x: Number(x), y: Number(y) };
-    if (isValidPosition(initial, settingDef, requireValid, used, noOverlap)) return initial;
+    const requireValid = placementRules.must_be_valid_tile !== false;
+    const noOverlap = placementRules.no_overlap !== false;
+    const allowSpawnFallback =
+      placementRules.fallback_to_spawn_points === true || priority.includes('spawn_points');
+    const allowAnyValidFallback =
+      zoneRules.fallback_to_any_valid_tile === true || priority.includes('random_valid_tile');
 
-    const spawn = Array.isArray(settingDef?.spawn_points) ? settingDef.spawn_points.find((pos) => isValidPosition(pos, settingDef, requireValid, used, noOverlap)) : null;
-    if (spawn) return spawn;
+    const exact = { x: Number(x), y: Number(y) };
+    if (isValidPosition(exact, settingDef, requireValid, used, noOverlap)) {
+      return exact;
+    }
 
-    return pickAnyValidTile(settingDef?.collision_map, used);
+    for (const step of priority) {
+      if (step === 'spawn_points' && allowSpawnFallback) {
+        const spawn = pickSpawnPoint(settingDef?.spawn_points, settingDef, requireValid, used, noOverlap);
+        if (spawn) return spawn;
+      }
+
+      if (step === 'random_valid_tile' && allowAnyValidFallback) {
+        const tile = pickAnyValidTile(settingDef?.collision_map, used);
+        if (tile) return tile;
+      }
+    }
+
+    if (allowSpawnFallback) {
+      const spawn = pickSpawnPoint(settingDef?.spawn_points, settingDef, requireValid, used, noOverlap);
+      if (spawn) return spawn;
+    }
+
+    if (allowAnyValidFallback) {
+      return pickAnyValidTile(settingDef?.collision_map, used);
+    }
+
+    return null;
+  }
+
+  function pickSpawnPoint(spawnPoints, settingDef, requireValid, used, noOverlap) {
+    if (!Array.isArray(spawnPoints)) return null;
+    return (
+      spawnPoints.find((point) => isValidPosition(point, settingDef, requireValid, used, noOverlap)) ||
+      null
+    );
   }
 
   function isValidPosition(pos, settingDef, requireValid, used, noOverlap) {
