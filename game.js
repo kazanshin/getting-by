@@ -247,7 +247,7 @@
     const settingKey = imagePathToSettingKey(screen.image);
     if (!settingKey) return;
 
-    const settingDef = state.data.settings?.settings?.[settingKey];
+    const settingDef = state.data.settings?.[settingKey];
     const placementByScene = state.data.placements?.[settingKey];
     if (!placementByScene || typeof placementByScene !== 'object') {
       console.warn(`[placement] No placement object for setting="${settingKey}".`);
