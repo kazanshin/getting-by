@@ -49,7 +49,7 @@ body {
 
 .sprite {
   position: absolute;
-  width: clamp(26px, 3.2vw, 72px);
+  width: 192px;  
   height: auto;
   transform: translate(-50%, -100%);
   image-rendering: pixelated;
