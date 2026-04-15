@@ -1,5 +1,4 @@
 {
-"settings": {
 "school_hallway": {
   "background": "graphics/settings/school_hallway.png",
   "grid_size": { "cols": 20, "rows": 12 },
@@ -439,6 +438,5 @@
       { "x": 14, "y": 9 }
     ]
   }
-}
 }
 }
