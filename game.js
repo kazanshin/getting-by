@@ -340,14 +340,18 @@
 
     const used = new Set();
     const entities = endingPlacement.entities || [];
+    console.log('ending entities', entities);
     entities.forEach((entity) => {
       const count = Math.max(1, Number(entity.count) || 1);
       for (let index = 0; index < count; index += 1) {
         const pos = pickEndingPosition(entity.zone, endingMap, used);
         if (!pos) continue;
         used.add(`${pos.x},${pos.y}`);
-        const sprite = entity.id === 'player' ? global.player?.sprite : entity.sprite;
-        if (!sprite) continue;
+        const sprite = entity.sprite || (entity.id === 'player' ? global.player?.sprite : null);
+        if (!sprite) {
+          console.warn(`[ending] Missing sprite for entity "${entity.id || 'unknown'}".`);
+          continue;
+        }
         drawSprite(sprite, pos, endingMap.grid_size, `${entity.id || 'entity'}-${index}`);
       }
     });
@@ -461,11 +465,16 @@
   function drawSprite(spritePath, position, gridSize, id) {
     const cols = Number(gridSize?.cols) || 20;
     const rows = Number(gridSize?.rows) || 12;
+    const gameRect = el.bg.getBoundingClientRect();
+    const cellWidth = gameRect.width / cols;
+    const cellHeight = gameRect.height / rows;
+    const spriteWidth = Math.max(20, Math.min(cellWidth, cellHeight) * 0.9);
 
     const sprite = document.createElement('img');
     sprite.className = 'sprite';
     sprite.src = normalizePath(spritePath);
     sprite.alt = id;
+    sprite.style.width = `${spriteWidth}px`;
     sprite.style.left = `${((position.x + 0.5) / cols) * 100}%`;
     sprite.style.top = `${((position.y + 1) / rows) * 100}%`;
 
