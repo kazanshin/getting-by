@@ -34,10 +34,10 @@ body {
   position: absolute;
   inset: 0;
   background-color: #000;
-  background-position: center;
+  background-position: center 40%;
   background-repeat: no-repeat;
-  background-size: cover;
-  image-rendering: pixelated;
+  background-size: contain;   
+    image-rendering: pixelated;
 }
 
 .sprite-layer {
@@ -49,8 +49,10 @@ body {
 
 .sprite {
   position: absolute;
-  width: clamp(26px, 3.2vw, 72px);
+
+  width: 96px;   
   height: auto;
+
   transform: translate(-50%, -100%);
   image-rendering: pixelated;
 }
@@ -59,7 +61,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 3;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 10%, rgba(0, 0, 0, 0.28) 45%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.82) 10%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%);
   pointer-events: none;
 }
 
