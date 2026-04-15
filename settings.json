@@ -1,5 +1,4 @@
 {
-"settings": {
 
 "school_hallway": {
   "background": "graphics/settings/school_hallway.png",
@@ -124,5 +123,4 @@
   }
 }
 
-}
 }
