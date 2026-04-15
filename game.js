@@ -248,11 +248,39 @@
     if (!settingKey) return;
 
     const settingDef = state.data.settings?.settings?.[settingKey];
-    const entities = resolveSceneEntities(settingKey, screenId);
+    const placementByScene = state.data.placements?.[settingKey];
+    if (!placementByScene || typeof placementByScene !== 'object') {
+      console.warn(`[placement] No placement object for setting="${settingKey}".`);
+      return;
+    }
+
+    const explicitSceneType = screen.scene || screen.context;
+    let sceneType = explicitSceneType;
+
+    if (!sceneType) {
+      if (Array.isArray(placementByScene.normal)) {
+        sceneType = 'normal';
+      } else {
+        sceneType = Object.keys(placementByScene)[0];
+      }
+    }
+
+    let entities = placementByScene?.[sceneType];
     if (!Array.isArray(entities)) {
-      console.warn(
-        `[placement] No valid entity array for setting="${settingKey}", screen="${screenId}".`
-      );
+      if (Array.isArray(placementByScene.normal)) {
+        sceneType = 'normal';
+        entities = placementByScene.normal;
+      } else {
+        const firstKey = Object.keys(placementByScene)[0];
+        sceneType = firstKey;
+        entities = placementByScene?.[firstKey];
+      }
+    }
+
+    console.log('placement lookup', { settingKey, sceneType, entities });
+
+    if (!Array.isArray(entities)) {
+      console.warn(`[placement] No valid entity array for setting="${settingKey}", scene="${sceneType}".`);
       return;
     }
 
