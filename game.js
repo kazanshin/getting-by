@@ -14,24 +14,26 @@
   const STATS = ['education', 'money', 'stress', 'support', 'risk'];
 
   const state = {
-    phase: 'boot', // boot | welcome | instructions | game | ending
+    phase: 'boot',
     currentScreenId: null,
     instructionIndex: 0,
     stats: Object.fromEntries(STATS.map((key) => [key, 0])),
     data: {},
     audio: {
       currentKey: null,
-      currentEl: null
+      currentEl: null,
+      unlocked: false,
+      pending: null
     }
   };
 
   const el = {
     bg: document.getElementById('background'),
+    sprites: document.getElementById('sprite-layer'),
     title: document.getElementById('title'),
     text: document.getElementById('text'),
     choices: document.getElementById('choices'),
-    error: document.getElementById('error'),
-    dialogue: document.getElementById('dialogue')
+    error: document.getElementById('error')
   };
 
   document.addEventListener('DOMContentLoaded', init);
@@ -51,9 +53,7 @@
   async function loadJson(path) {
     try {
       const response = await fetch(path);
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status} for ${path}`);
-      }
+      if (!response.ok) throw new Error(`HTTP ${response.status} for ${path}`);
       const text = await response.text();
       return safeParseJson(text, path);
     } catch (error) {
@@ -67,7 +67,6 @@
     try {
       return JSON.parse(text);
     } catch (error) {
-      // Fallback for minor malformed JSON that should not crash the game.
       if (path === 'endings.json') {
         try {
           return JSON.parse(`${text.trim()}\n}`);
@@ -77,7 +76,6 @@
           return {};
         }
       }
-
       console.error(`JSON parse error in ${path}`, error);
       showError(`Data format issue in ${path}.`);
       return {};
@@ -87,19 +85,42 @@
   function showWelcome() {
     state.phase = 'welcome';
     const welcome = state.data.ui?.welcome || {};
-    setBackground(welcome.background);
+    const welcomeImage = pickWelcomeBackground(welcome);
+
+    setBackground(welcomeImage || welcome.background || '#000000');
+    clearSprites();
     el.title.textContent = extractUiContentById(welcome.ui_elements, 'title') || 'Getting By';
-    el.text.textContent = [
-      extractUiContentById(welcome.ui_elements, 'subtitle'),
-      '',
-      extractUiContentById(welcome.ui_elements, 'start_prompt')
-    ]
-      .filter(Boolean)
-      .join('\n');
+    el.text.textContent = extractUiContentById(welcome.ui_elements, 'subtitle') || '';
 
     clearChoices();
-    bindOneTimeAdvance(() => showInstructions());
-    playAudioForScene('S01', { type: 'story' });
+    const prompt = extractUiContentById(welcome.ui_elements, 'start_prompt') || 'Press to begin';
+    addButton(prompt, () => {
+      unlockAudio();
+      requestAudioForScene('S01', { type: 'story' });
+      showInstructions();
+    }, true);
+
+    const keyHandler = (event) => {
+      if (state.phase !== 'welcome') return;
+      if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') return;
+      window.removeEventListener('keydown', keyHandler);
+      unlockAudio();
+      requestAudioForScene('S01', { type: 'story' });
+      showInstructions();
+    };
+    window.addEventListener('keydown', keyHandler);
+  }
+
+  function pickWelcomeBackground(welcome) {
+    const elementImage = (welcome.ui_elements || []).find((element) => element?.type === 'image' && element?.source)?.source;
+    if (elementImage) return normalizePath(elementImage);
+
+    if (typeof welcome.background === 'string' && /\.(png|jpg|jpeg|webp)$/i.test(welcome.background)) {
+      return normalizePath(welcome.background);
+    }
+
+    // Asset fallback in graphics/ui for projects where ui.json keeps a color background.
+    return 'graphics/ui/welcome_screen.png';
   }
 
   function showInstructions() {
@@ -116,8 +137,9 @@
     }
 
     const instruction = instructions[state.instructionIndex] || {};
-    const uiInstructionConfig = state.data.ui?.instructions_screen || {};
-    setBackground(uiInstructionConfig.background || '#000000');
+    const config = state.data.ui?.instructions_screen || {};
+    setBackground(normalizePath(config.background || '#000000'));
+    clearSprites();
     el.title.textContent = '';
     el.text.textContent = instruction.text || '';
 
@@ -131,17 +153,15 @@
   function startGame() {
     state.phase = 'game';
     state.stats = Object.fromEntries(STATS.map((key) => [key, 0]));
-    const firstId = resolveFirstStoryId();
-    goToScreen(firstId);
+    goToScreen(resolveFirstStoryId());
   }
 
   function resolveFirstStoryId() {
     const story = state.data.story || {};
     if (story.S01) return 'S01';
-
-    const storyIds = Object.keys(story).filter((id) => /^S\d+/i.test(id));
-    storyIds.sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-    return storyIds[0] || null;
+    const ids = Object.keys(story).filter((id) => /^S\d+/i.test(id));
+    ids.sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+    return ids[0] || null;
   }
 
   function goToScreen(screenId) {
@@ -151,8 +171,7 @@
     }
 
     if (screenId === 'ENDING_CHECK') {
-      const endingId = evaluateEnding();
-      goToScreen(endingId);
+      goToScreen(evaluateEnding());
       return;
     }
 
@@ -168,20 +187,18 @@
 
   function renderScreen(screenId, screen) {
     const screenType = screen.type || 'story';
-    const background = resolveBackgroundForScreen(screenId, screen);
-    setBackground(background);
+    setBackground(resolveBackgroundForScreen(screenId, screen));
+    renderSpritesForScreen(screenId, screen);
 
     el.title.textContent = screen.title || '';
     el.text.textContent = screen.text || '';
     clearChoices();
 
-    playAudioForScene(screenId, screen);
+    requestAudioForScene(screenId, screen);
 
     if (screenType === 'dilemma') {
       const choices = Array.isArray(screen.choices) ? screen.choices.slice(0, 2) : [];
-      if (choices.length !== 2) {
-        showError(`Dilemma ${screenId} does not contain exactly 2 choices.`);
-      }
+      if (choices.length !== 2) showError(`Dilemma ${screenId} does not contain exactly 2 choices.`);
 
       choices.forEach((choice) => {
         addButton(choice?.text || 'Choose', () => {
@@ -190,9 +207,7 @@
         });
       });
 
-      if (choices.length === 0) {
-        addButton('Continue', () => goToScreen(screen.next), true);
-      }
+      if (choices.length === 0) addButton('Continue', () => goToScreen(screen.next), true);
       return;
     }
 
@@ -214,8 +229,153 @@
       const endingVisual = state.data.endings?.endings?.[endingKey];
       return endingVisual?.background || normalizePath(screen.image);
     }
-
     return normalizePath(screen.image);
+  }
+
+  function renderSpritesForScreen(screenId, screen) {
+    clearSprites();
+
+    if (screen.type === 'ending') {
+      renderEndingSprites(screenId);
+      return;
+    }
+
+    const settingKey = imagePathToSettingKey(screen.image);
+    if (!settingKey) return;
+
+    const settingDef = state.data.settings?.settings?.[settingKey];
+    const placementScenes = state.data.placements?.[settingKey];
+    if (!placementScenes || typeof placementScenes !== 'object') return;
+
+    const entities = Object.values(placementScenes).find((value) => Array.isArray(value)) || [];
+    const used = new Set();
+
+    entities.forEach((entity) => {
+      const pos = validateOrFallbackPosition(entity.x, entity.y, settingDef, used);
+      if (!pos) return;
+      used.add(`${pos.x},${pos.y}`);
+      drawSprite(entity.sprite, pos, settingDef?.grid_size, entity.id || 'entity');
+    });
+  }
+
+  function renderEndingSprites(screenId) {
+    const endingKey = screenId.replace('ENDING_', '').toLowerCase();
+    const endingMap = state.data.endings?.endings?.[endingKey];
+    const endingPlacement = state.data.endingPlacements?.endings?.[endingKey];
+    const global = state.data.endingPlacements?.global || {};
+
+    if (!endingMap || !endingPlacement) return;
+
+    const used = new Set();
+    const entities = endingPlacement.entities || [];
+    entities.forEach((entity) => {
+      const count = Math.max(1, Number(entity.count) || 1);
+      for (let index = 0; index < count; index += 1) {
+        const pos = pickEndingPosition(entity.zone, endingMap, used);
+        if (!pos) continue;
+        used.add(`${pos.x},${pos.y}`);
+        const sprite = entity.id === 'player' ? global.player?.sprite : entity.sprite;
+        if (!sprite) continue;
+        drawSprite(sprite, pos, endingMap.grid_size, `${entity.id || 'entity'}-${index}`);
+      }
+    });
+  }
+
+  function pickEndingPosition(zoneName, endingMap, used) {
+    const rules = state.data.placementRules || {};
+    const zoneRules = rules.zone_rules || {};
+    const placementPriority = rules.placement_priority || ['zone', 'random_valid_tile'];
+
+    for (const step of placementPriority) {
+      if (step === 'zone' && zoneRules.use_zones_if_available) {
+        const pos = pickFromZone(zoneName, endingMap.zones, used);
+        if (pos) return pos;
+      }
+
+      if (step === 'random_valid_tile' || (step === 'spawn_points' && zoneRules.fallback_to_any_valid_tile)) {
+        const pos = pickAnyValidTile(endingMap.placement_map, used);
+        if (pos) return pos;
+      }
+    }
+
+    return null;
+  }
+
+  function pickFromZone(zoneName, zones, used) {
+    const points = zones?.[zoneName];
+    if (!Array.isArray(points) || points.length === 0) return null;
+    return points.find((point) => !used.has(`${point.x},${point.y}`)) || points[0] || null;
+  }
+
+  function pickAnyValidTile(map, used) {
+    if (!Array.isArray(map)) return null;
+    const valid = [];
+
+    map.forEach((row, y) => {
+      if (!Array.isArray(row)) return;
+      row.forEach((value, x) => {
+        if (value === 1 && !used.has(`${x},${y}`)) valid.push({ x, y });
+      });
+    });
+
+    if (valid.length === 0) return null;
+    return valid[Math.floor(Math.random() * valid.length)];
+  }
+
+  function validateOrFallbackPosition(x, y, settingDef, used) {
+    const rules = state.data.placementRules?.placement_rules || {};
+    const requireValid = rules.must_be_valid_tile !== false;
+    const noOverlap = rules.no_overlap !== false;
+
+    const initial = { x: Number(x), y: Number(y) };
+    if (isValidPosition(initial, settingDef, requireValid, used, noOverlap)) return initial;
+
+    const spawn = Array.isArray(settingDef?.spawn_points) ? settingDef.spawn_points.find((pos) => isValidPosition(pos, settingDef, requireValid, used, noOverlap)) : null;
+    if (spawn) return spawn;
+
+    return pickAnyValidTile(settingDef?.collision_map, used);
+  }
+
+  function isValidPosition(pos, settingDef, requireValid, used, noOverlap) {
+    if (!Number.isFinite(pos?.x) || !Number.isFinite(pos?.y)) return false;
+
+    if (noOverlap && used.has(`${pos.x},${pos.y}`)) return false;
+
+    if (!requireValid) return true;
+
+    const row = settingDef?.collision_map?.[pos.y];
+    const tile = Array.isArray(row) ? row[pos.x] : 0;
+    return tile === 1;
+  }
+
+  function drawSprite(spritePath, position, gridSize, id) {
+    const cols = Number(gridSize?.cols) || 20;
+    const rows = Number(gridSize?.rows) || 12;
+
+    const sprite = document.createElement('img');
+    sprite.className = 'sprite';
+    sprite.src = normalizePath(spritePath);
+    sprite.alt = id;
+    sprite.style.left = `${((position.x + 0.5) / cols) * 100}%`;
+    sprite.style.top = `${((position.y + 1) / rows) * 100}%`;
+
+    sprite.addEventListener('error', () => {
+      console.warn(`Missing sprite asset: ${spritePath}`);
+      sprite.remove();
+    });
+
+    el.sprites.appendChild(sprite);
+  }
+
+  function imagePathToSettingKey(path) {
+    if (typeof path !== 'string') return null;
+    const parts = path.split('/');
+    const file = parts[parts.length - 1] || '';
+    return file.replace(/\.[^.]+$/, '');
+  }
+
+  function clearSprites() {
+    el.sprites.innerHTML = '';
   }
 
   function normalizePath(path) {
@@ -242,45 +402,32 @@
 
   function applyEffects(effects) {
     if (!effects || typeof effects !== 'object') return;
-
     STATS.forEach((key) => {
       const value = Number(effects[key]);
-      if (!Number.isNaN(value)) {
-        state.stats[key] += value;
-      }
+      if (!Number.isNaN(value)) state.stats[key] += value;
     });
   }
 
   function evaluateEnding() {
     const story = state.data.story || {};
     const endingIds = Object.keys(story).filter((id) => story[id]?.type === 'ending');
-
     for (const id of endingIds) {
       const logic = story[id]?.threshold_logic;
-      if (!logic) continue;
-      if (evaluateThreshold(logic, state.stats)) return id;
+      if (logic && evaluateThreshold(logic, state.stats)) return id;
     }
-
     return endingIds[0] || null;
   }
 
   function evaluateThreshold(expression, stats) {
     if (typeof expression !== 'string' || !expression.trim()) return false;
 
-    let jsExpression = expression
-      .replace(/\bAND\b/gi, '&&')
-      .replace(/\bOR\b/gi, '||')
-      .replace(/\bNOT\b/gi, '!');
+    let jsExpression = expression.replace(/\bAND\b/gi, '&&').replace(/\bOR\b/gi, '||').replace(/\bNOT\b/gi, '!');
 
     STATS.forEach((key) => {
-      const reg = new RegExp(`\\b${key}\\b`, 'g');
-      jsExpression = jsExpression.replace(reg, String(Number(stats[key] || 0)));
+      jsExpression = jsExpression.replace(new RegExp(`\\b${key}\\b`, 'g'), String(Number(stats[key] || 0)));
     });
 
-    if (!/^[\d\s<>=!&|()+\-.]*$/.test(jsExpression)) {
-      console.warn('Unsafe threshold expression blocked:', expression);
-      return false;
-    }
+    if (!/^[\d\s<>=!&|()+\-.]*$/.test(jsExpression)) return false;
 
     try {
       return Boolean(Function(`"use strict"; return (${jsExpression});`)());
@@ -290,22 +437,40 @@
     }
   }
 
-  function playAudioForScene(screenId, screen) {
-    const audioData = state.data.audio || {};
-    const rules = audioData.rules || {};
-    const tracks = audioData.tracks || {};
+  function unlockAudio() {
+    if (state.audio.unlocked) return;
+    state.audio.unlocked = true;
+    if (state.audio.pending) {
+      const pending = state.audio.pending;
+      state.audio.pending = null;
+      playTrackByKey(pending);
+    }
+  }
 
+  function requestAudioForScene(screenId, screen) {
+    const rules = state.data.audio?.rules || {};
     let trackKey = rules.special_cases?.[screenId];
 
-    if (!trackKey && screen.type === 'ending') {
-      trackKey = rules.ending_mapping?.[screenId];
-    }
+    if (!trackKey && screen.type === 'ending') trackKey = rules.ending_mapping?.[screenId];
+    if (!trackKey) trackKey = rules.scene_type_mapping?.[screen.type || 'story'];
 
     if (!trackKey) {
-      trackKey = rules.scene_type_mapping?.[screen.type || 'story'];
+      stopAudio();
+      return;
     }
 
-    if (!trackKey || !tracks[trackKey]) {
+    if (!state.audio.unlocked) {
+      state.audio.pending = trackKey;
+      return;
+    }
+
+    playTrackByKey(trackKey);
+  }
+
+  function playTrackByKey(trackKey) {
+    const tracks = state.data.audio?.tracks || {};
+    const track = tracks[trackKey];
+    if (!track) {
       stopAudio();
       return;
     }
@@ -314,14 +479,11 @@
 
     stopAudio();
 
-    const track = tracks[trackKey];
     const audio = new Audio(track.file);
     audio.loop = Boolean(track.loop);
     audio.volume = 0.7;
 
-    audio
-      .play()
-      .catch((err) => console.warn('Audio playback blocked until interaction:', err?.message || err));
+    audio.play().catch((err) => console.warn('Audio playback failed:', err?.message || err));
 
     state.audio.currentKey = trackKey;
     state.audio.currentEl = audio;
@@ -351,17 +513,6 @@
     button.textContent = label;
     button.addEventListener('click', onClick);
     el.choices.appendChild(button);
-  }
-
-  function bindOneTimeAdvance(handler) {
-    const onAdvance = () => {
-      window.removeEventListener('keydown', onAdvance);
-      window.removeEventListener('click', onAdvance);
-      handler();
-    };
-
-    window.addEventListener('keydown', onAdvance, { once: true });
-    window.addEventListener('click', onAdvance, { once: true });
   }
 
   function showError(message) {
