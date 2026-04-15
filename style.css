@@ -1,0 +1,128 @@
+:root {
+  --panel-bg: rgba(10, 10, 20, 0.84);
+  --panel-border: rgba(255, 255, 255, 0.24);
+  --text-main: #f2f2f2;
+  --text-muted: #cccccc;
+  --accent: #9ad6ff;
+  --danger: #ff8d8d;
+  --shadow: 0 0 0 2px rgba(255, 255, 255, 0.08), 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
+  color: var(--text-main);
+  background: #000;
+}
+
+.game {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 10%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+}
+
+.dialogue-box {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(12px, 3vh, 24px);
+  transform: translateX(-50%);
+  width: min(1200px, calc(100% - 24px));
+  min-height: 30vh;
+  max-height: 45vh;
+  overflow-y: auto;
+  background: var(--panel-bg);
+  border: 2px solid var(--panel-border);
+  box-shadow: var(--shadow);
+  border-radius: 6px;
+  padding: clamp(16px, 2.2vw, 28px);
+  backdrop-filter: blur(2px);
+}
+
+.title {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: clamp(20px, 2.8vw, 34px);
+  letter-spacing: 0.02em;
+}
+
+.text {
+  margin: 0;
+  color: var(--text-main);
+  white-space: pre-line;
+  line-height: 1.5;
+  font-size: clamp(16px, 1.8vw, 24px);
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.choice-btn {
+  width: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-main);
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: 4px;
+  font-size: clamp(15px, 1.5vw, 20px);
+  cursor: pointer;
+}
+
+.choice-btn:hover,
+.choice-btn:focus-visible {
+  border-color: var(--accent);
+  background: rgba(154, 214, 255, 0.16);
+  outline: none;
+}
+
+.choice-btn.continue {
+  text-align: center;
+  font-weight: 700;
+}
+
+.error {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1000px, calc(100% - 24px));
+  background: rgba(70, 0, 0, 0.8);
+  border: 1px solid rgba(255, 141, 141, 0.45);
+  color: #ffd9d9;
+  padding: 12px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none;
+}
