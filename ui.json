@@ -31,7 +31,7 @@
       {
         "id": "start_prompt",
         "type": "text",
-        "content": "Press any key to begin",
+        "content": "Click here to begin",
         "anchor": "bottom_center",
         "x": 0,
         "y": -1,
