@@ -23,7 +23,11 @@
       currentKey: null,
       currentEl: null,
       unlocked: false,
-      pending: null
+      pending: null,
+      targetVolume: 0.5,
+      fadeDurationMs: 800,
+      fadeIntervalId: null,
+      transitionId: 0
     }
   };
 
@@ -477,19 +481,92 @@
 
     if (state.audio.currentKey === trackKey && state.audio.currentEl) return;
 
-    stopAudio();
+    const transitionId = ++state.audio.transitionId;
 
-    const audio = new Audio(track.file);
-    audio.loop = Boolean(track.loop);
-    audio.volume = 0.7;
+    fadeOutCurrentTrack()
+      .then(() => {
+        if (transitionId !== state.audio.transitionId) return;
 
-    audio.play().catch((err) => console.warn('Audio playback failed:', err?.message || err));
+        const audio = new Audio(track.file);
+        audio.loop = Boolean(track.loop);
+        audio.volume = 0;
 
-    state.audio.currentKey = trackKey;
-    state.audio.currentEl = audio;
+        return audio.play().then(() => {
+          if (transitionId !== state.audio.transitionId) {
+            audio.pause();
+            return;
+          }
+
+          state.audio.currentKey = trackKey;
+          state.audio.currentEl = audio;
+          fadeInTrack(audio, state.audio.targetVolume, state.audio.fadeDurationMs);
+        });
+      })
+      .catch((err) => console.warn('Audio playback failed:', err?.message || err));
+  }
+
+  function clearFadeInterval() {
+    if (!state.audio.fadeIntervalId) return;
+    clearInterval(state.audio.fadeIntervalId);
+    state.audio.fadeIntervalId = null;
+  }
+
+  function fadeOutCurrentTrack() {
+    const audio = state.audio.currentEl;
+    if (!audio) return Promise.resolve();
+
+    clearFadeInterval();
+
+    const duration = state.audio.fadeDurationMs;
+    const frameMs = 40;
+    const steps = Math.max(1, Math.round(duration / frameMs));
+    const startVolume = Number(audio.volume) || 0;
+    let step = 0;
+
+    return new Promise((resolve) => {
+      state.audio.fadeIntervalId = setInterval(() => {
+        step += 1;
+        const progress = Math.min(1, step / steps);
+        audio.volume = Math.max(0, startVolume * (1 - progress));
+
+        if (progress >= 1) {
+          clearFadeInterval();
+          audio.pause();
+          audio.currentTime = 0;
+          state.audio.currentEl = null;
+          state.audio.currentKey = null;
+          resolve();
+        }
+      }, frameMs);
+    });
+  }
+
+  function fadeInTrack(audio, targetVolume, durationMs) {
+    if (!audio) return;
+
+    clearFadeInterval();
+
+    const frameMs = 40;
+    const steps = Math.max(1, Math.round(durationMs / frameMs));
+    let step = 0;
+
+    audio.volume = 0;
+
+    state.audio.fadeIntervalId = setInterval(() => {
+      step += 1;
+      const progress = Math.min(1, step / steps);
+      audio.volume = Math.min(targetVolume, targetVolume * progress);
+
+      if (progress >= 1) {
+        audio.volume = targetVolume;
+        clearFadeInterval();
+      }
+    }, frameMs);
   }
 
   function stopAudio() {
+    state.audio.transitionId += 1;
+    clearFadeInterval();
     if (!state.audio.currentEl) return;
     state.audio.currentEl.pause();
     state.audio.currentEl.currentTime = 0;
