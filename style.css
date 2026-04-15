@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap');
+
 :root {
   --panel-bg: rgba(10, 10, 20, 0.84);
   --panel-border: rgba(255, 255, 255, 0.24);
   --text-main: #f2f2f2;
-  --text-muted: #cccccc;
   --accent: #9ad6ff;
-  --danger: #ff8d8d;
   --shadow: 0 0 0 2px rgba(255, 255, 255, 0.08), 0 20px 40px rgba(0, 0, 0, 0.45);
 }
 
@@ -17,7 +17,8 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-weight: 700;
   color: var(--text-main);
   background: #000;
 }
@@ -39,15 +40,32 @@ body {
   image-rendering: pixelated;
 }
 
+.sprite-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sprite {
+  position: absolute;
+  width: clamp(26px, 3.2vw, 72px);
+  height: auto;
+  transform: translate(-50%, -100%);
+  image-rendering: pixelated;
+}
+
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 10%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0.6) 100%);
+  z-index: 3;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 10%, rgba(0, 0, 0, 0.28) 45%, rgba(0, 0, 0, 0.6) 100%);
   pointer-events: none;
 }
 
 .dialogue-box {
   position: absolute;
+  z-index: 4;
   left: 50%;
   bottom: clamp(12px, 3vh, 24px);
   transform: translateX(-50%);
@@ -68,6 +86,7 @@ body {
   color: var(--accent);
   font-size: clamp(20px, 2.8vw, 34px);
   letter-spacing: 0.02em;
+  font-weight: 800;
 }
 
 .text {
@@ -95,6 +114,8 @@ body {
   border-radius: 4px;
   font-size: clamp(15px, 1.5vw, 20px);
   cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
 }
 
 .choice-btn:hover,
@@ -106,11 +127,11 @@ body {
 
 .choice-btn.continue {
   text-align: center;
-  font-weight: 700;
 }
 
 .error {
   position: absolute;
+  z-index: 5;
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
