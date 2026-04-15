@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting By</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="game" class="game" aria-live="polite">
+      <div id="background" class="background" role="img" aria-label="Scene background"></div>
+      <div class="overlay"></div>
+
+      <section id="dialogue" class="dialogue-box" tabindex="0">
+        <h1 id="title" class="title"></h1>
+        <p id="text" class="text"></p>
+        <div id="choices" class="choices"></div>
+      </section>
+
+      <section id="error" class="error hidden"></section>
+    </main>
+
+    <script src="game.js" defer></script>
+  </body>
+</html>
