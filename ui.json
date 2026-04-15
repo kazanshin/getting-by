@@ -1,0 +1,74 @@
+{
+  "welcome": {
+    "background": "#000000",
+    "type": "static",
+
+    "ui_elements": [
+      {
+        "id": "title",
+        "type": "text",
+        "content": "Getting By",
+        "anchor": "center",
+        "x": 0,
+        "y": -2,
+        "font": "Inter",
+        "size": 64,
+        "weight": "bold",
+        "color": "#FFFFFF"
+      },
+      {
+        "id": "subtitle",
+        "type": "text",
+        "content": "Final Narrative Project for EDUBT418\nBy: Jayson Phillips & Alex Boucher",
+        "anchor": "center",
+        "x": 0,
+        "y": 1,
+        "font": "Inter",
+        "size": 18,
+        "color": "#AAAAAA",
+        "line_spacing": 1.4
+      },
+      {
+        "id": "start_prompt",
+        "type": "text",
+        "content": "Press any key to begin",
+        "anchor": "bottom_center",
+        "x": 0,
+        "y": -1,
+        "font": "Inter",
+        "size": 16,
+        "color": "#666666"
+      }
+    ],
+
+    "effects": [
+      {
+        "type": "fade_in",
+        "duration": 1500
+      }
+    ]
+  },
+
+  "instructions_screen": {
+    "background": "#000000",
+    "type": "sequence",
+
+    "source": "instructions.json",
+
+    "text_style": {
+      "font": "Inter",
+      "size": 28,
+      "color": "#FFFFFF",
+      "anchor": "center",
+      "x": 0,
+      "y": 0,
+      "line_spacing": 1.4
+    },
+
+    "behavior": {
+      "advance_on_input": true,
+      "fade_in_duration": 500,
+      "fade_out_duration": 300
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "school_classroom": {
+    "normal": [
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 8 },
+
+      { "id": "teacher", "sprite": "graphics/chars/npc_school_teacher_formal.png", "x": 10, "y": 4 },
+
+      { "id": "student1", "sprite": "graphics/chars/npc_student_average.png", "x": 6, "y": 6 },
+      { "id": "student2", "sprite": "graphics/chars/npc_student_female.png", "x": 14, "y": 6 },
+
+      { "id": "bully", "sprite": "graphics/chars/npc_student_bully.png", "x": 14, "y": 8 },
+      { "id": "struggling", "sprite": "graphics/chars/npc_student_struggling.png", "x": 6, "y": 8 }
+    ]
+  },
+
+  "school_hallway": {
+    "passing_time": [
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 6 },
+
+      { "id": "janitor", "sprite": "graphics/chars/npc_janitor.png", "x": 5, "y": 7 },
+      { "id": "student_avg", "sprite": "graphics/chars/npc_student_average.png", "x": 12, "y": 6 },
+      { "id": "bad_influence", "sprite": "graphics/chars/npc_student_bad_influence.png", "x": 14, "y": 7 }
+    ]
+  },
+
+  "school_cafeteria": {
+    "lunch": [
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 },
+
+      { "id": "cafeteria_worker", "sprite": "graphics/chars/npc_cafeteria_worker.png", "x": 10, "y": 3 },
+
+      { "id": "group1", "sprite": "graphics/chars/npc_student_affluent.png", "x": 14, "y": 6 },
+      { "id": "group2", "sprite": "graphics/chars/npc_student_average.png", "x": 8, "y": 6 },
+
+      { "id": "isolated", "sprite": "graphics/chars/npc_student_struggling.png", "x": 5, "y": 9 }
+    ]
+  },
+
+  "school_outside": {
+    "after_school": [
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 8 },
+
+      { "id": "police", "sprite": "graphics/chars/npc_police.png", "x": 6, "y": 6 },
+      { "id": "recruiter", "sprite": "graphics/chars/npc_military_recruiter.png", "x": 14, "y": 6 }
+    ]
+  },
+
+  "workplace": {
+    "shift": [
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 8 },
+
+      { "id": "boss", "sprite": "graphics/chars/npc_work_boss.png", "x": 10, "y": 3 },
+      { "id": "coworker", "sprite": "graphics/chars/npc_work_coworker.png", "x": 6, "y": 6 }
+    ]
+  },
+
+  "party_house": {
+    "party": [
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 6 },
+
+      { "id": "bad_influence", "sprite": "graphics/chars/npc_student_bad_influence.png", "x": 9, "y": 6 },
+      { "id": "social", "sprite": "graphics/chars/npc_student_affluent.png", "x": 12, "y": 6 },
+
+      { "id": "observer", "sprite": "graphics/chars/npc_student_average.png", "x": 4, "y": 9 }
+    ]
+  },
+
+  "home_kitchen": {
+    "evening": [
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 },
+
+      { "id": "parent1", "sprite": "graphics/chars/npc_parent_female.png", "x": 8, "y": 6 },
+      { "id": "parent2", "sprite": "graphics/chars/npc_parent_male.png", "x": 12, "y": 6 }
+    ]
+  },
+
+  "home_bedroom": {
+    "alone": [
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 }
+    ]
+  },
+
+  "leasing_office": {
+    "meeting": [
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 },
+
+      { "id": "agent", "sprite": "graphics/chars/npc_work_boss.png", "x": 10, "y": 3 }
+    ]
+  }
+}

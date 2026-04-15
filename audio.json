@@ -1,0 +1,60 @@
+{
+  "tracks": {
+    "welcome": {
+      "file": "audio/welcome_screen.mp3",
+      "loop": true,
+      "fade_in": 1000
+    },
+    "main": {
+      "file": "audio/main_gameplay.mp3",
+      "loop": true,
+      "fade_in": 1000
+    },
+    "dilemma": {
+      "file": "audio/dilemmas_and_crises.mp3",
+      "loop": true,
+      "fade_in": 500
+    },
+    "small_win": {
+      "file": "audio/small_win.mp3",
+      "loop": false,
+      "fade_in": 300
+    },
+    "good_ending": {
+      "file": "audio/good_endings.mp3",
+      "loop": false,
+      "fade_in": 1000
+    },
+    "bad_ending": {
+      "file": "audio/bad_endings.mp3",
+      "loop": false,
+      "fade_in": 1000
+    }
+  },
+
+  "rules": {
+    "on_scene_change": {
+      "stop_previous": true,
+      "fade_out": 300
+    },
+
+    "scene_type_mapping": {
+      "story": "main",
+      "dilemma": "dilemma",
+      "consequence": "main"
+    },
+
+    "special_cases": {
+      "S01": "welcome"
+    },
+
+    "ending_mapping": {
+      "ENDING_UNIVERSITY": "good_ending",
+      "ENDING_COLLEGE": "good_ending",
+      "ENDING_WORK": "small_win",
+      "ENDING_MILITARY": "small_win",
+      "ENDING_DROPOUT": "bad_ending",
+      "ENDING_CRISIS": "bad_ending"
+    }
+  }
+}

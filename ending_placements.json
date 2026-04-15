@@ -1,0 +1,133 @@
+{
+  "global": {
+    "player": {
+      "sprite": "graphics/chars/player_character.png",
+      "required": true,
+      "count": 1
+    }
+  },
+
+  "endings": {
+
+    "college": {
+      "entities": [
+        {
+          "id": "player",
+          "zone": "center_path"
+        },
+        {
+          "id": "teacher",
+          "sprite": "graphics/chars/npc_school_teacher_formal.png",
+          "zone": "front_focus",
+          "count": 1
+        },
+        {
+          "id": "students",
+          "sprite": "graphics/chars/npc_student_average.png",
+          "zone": "back_row",
+          "count": 2
+        }
+      ]
+    },
+
+    "university": {
+      "entities": [
+        {
+          "id": "player",
+          "zone": "center_path"
+        },
+        {
+          "id": "observer_left",
+          "sprite": "graphics/chars/npc_student_average.png",
+          "zone": "side_observers",
+          "count": 1
+        },
+        {
+          "id": "observer_right",
+          "sprite": "graphics/chars/npc_student_affluent.png",
+          "zone": "side_observers",
+          "count": 1
+        }
+      ]
+    },
+
+    "military": {
+      "entities": [
+        {
+          "id": "player",
+          "zone": "center_line"
+        },
+        {
+          "id": "left_rank",
+          "sprite": "graphics/chars/npc_student_average.png",
+          "zone": "left_rank",
+          "count": 1
+        },
+        {
+          "id": "right_rank",
+          "sprite": "graphics/chars/npc_student_average.png",
+          "zone": "right_rank",
+          "count": 1
+        },
+        {
+          "id": "authority",
+          "sprite": "graphics/chars/npc_military_recruiter.png",
+          "zone": "rear_presence",
+          "count": 1
+        }
+      ]
+    },
+
+    "work": {
+      "entities": [
+        {
+          "id": "player",
+          "zone": "center_lane"
+        },
+        {
+          "id": "coworker",
+          "sprite": "graphics/chars/npc_work_coworker.png",
+          "zone": "left_lane",
+          "count": 1
+        },
+        {
+          "id": "coworker2",
+          "sprite": "graphics/chars/npc_work_coworker.png",
+          "zone": "right_lane",
+          "count": 1
+        },
+        {
+          "id": "boss",
+          "sprite": "graphics/chars/npc_work_boss.png",
+          "zone": "rear_stock_area",
+          "count": 1
+        }
+      ]
+    },
+
+    "crisis": {
+      "entities": [
+        {
+          "id": "player",
+          "zone": "center_isolation"
+        }
+      ]
+    },
+
+    "dropout": {
+      "entities": [
+        {
+          "id": "player",
+          "zone": "center"
+        },
+        {
+          "id": "baby",
+          "sprite": "graphics/chars/npc_baby.png",
+          "zone": "side",
+          "count": 1
+        }
+      ]
+    }
+
+  }
+}

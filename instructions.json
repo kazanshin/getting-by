@@ -1,0 +1,24 @@
+{
+  "instructions": [
+    {
+      "id": "intro_1",
+      "text": "You have four years."
+    },
+    {
+      "id": "intro_2",
+      "text": "There is never enough:\nmoney, time, energy."
+    },
+    {
+      "id": "intro_3",
+      "text": "Every choice has a cost."
+    },
+    {
+      "id": "intro_4",
+      "text": "Some paths can change things."
+    },
+    {
+      "id": "intro_5",
+      "text": "If you can hold on."
+    }
+  ]
+}

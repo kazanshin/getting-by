@@ -1,0 +1,29 @@
+{
+  "grid_interpretation": {
+    "0": "blocked",
+    "1": "valid"
+  },
+
+  "placement_rules": {
+    "must_be_valid_tile": true,
+    "no_overlap": true,
+    "max_attempts": 20
+  },
+
+  "zone_rules": {
+    "use_zones_if_available": true,
+    "fallback_to_any_valid_tile": true
+  },
+
+  "placement_priority": [
+    "zone",
+    "spawn_points",
+    "random_valid_tile"
+  ],
+
+  "coordinate_system": {
+    "origin": "top_left",
+    "x_increases_right": true,
+    "y_increases_down": true
+  }
+}
