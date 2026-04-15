@@ -34,9 +34,9 @@ body {
   position: absolute;
   inset: 0;
   background-color: #000;
-  background-position: center;
+  background-position: center 35%;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   image-rendering: pixelated;
 }
 
