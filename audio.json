@@ -3,7 +3,7 @@
     "welcome": {
       "file": "audio/welcome_screen.mp3",
       "loop": true,
-      "fade_in": 1000
+      "fade_in": 100
     },
     "main": {
       "file": "audio/main_gameplay.mp3",
@@ -23,12 +23,12 @@
     "good_ending": {
       "file": "audio/good_endings.mp3",
       "loop": false,
-      "fade_in": 1000
+      "fade_in": 500
     },
     "bad_ending": {
       "file": "audio/bad_endings.mp3",
       "loop": false,
-      "fade_in": 1000
+      "fade_in": 500
     }
   },
 
