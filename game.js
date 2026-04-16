@@ -32,6 +32,7 @@
   };
 
   const el = {
+    game: document.getElementById('game'),
     bg: document.getElementById('background'),
     sprites: document.getElementById('sprite-layer'),
     title: document.getElementById('title'),
@@ -88,6 +89,7 @@
 
   function showWelcome() {
     state.phase = 'welcome';
+    el.game.classList.add('welcome-mode');
     const welcome = state.data.ui?.welcome || {};
     const welcomeImage = pickWelcomeBackground(welcome);
 
@@ -129,6 +131,7 @@
 
   function showInstructions() {
     state.phase = 'instructions';
+    el.game.classList.remove('welcome-mode');
     state.instructionIndex = 0;
     advanceInstruction();
   }
@@ -156,6 +159,7 @@
 
   function startGame() {
     state.phase = 'game';
+    el.game.classList.remove('welcome-mode');
     state.stats = Object.fromEntries(STATS.map((key) => [key, 0]));
     goToScreen(resolveFirstStoryId());
   }
