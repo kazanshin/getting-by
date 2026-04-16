@@ -690,31 +690,39 @@
   "type": "system",
   "description": "Evaluate all ending conditions and select the first valid ending based on threshold_logic"
 },
-  "ENDING_CRISIS": {
+    "ENDING_WORK": {
   "type": "ending",
-  "image": "street_outside_school.png",
-  "title": "Overdose / Homelessness",
-  "threshold_logic": "risk >= 5 AND support <= 0 AND money <= -1",
-  "text": "It didn't happen all at once. That's the thing nobody tells you — it's a series of small steps that each made sense at the time. The couch you're sleeping on belongs to someone you met six months ago. The stuff you're taking most nights started as something to take the edge off. You still know what day it is and sometimes that feels like enough. There are numbers you could call. There are people who would still pick up. Most nights you don't reach for your phone. Most nights you just get through to morning.",
+  "image": "workplace.png",
+  "title": "Straight to Work",
+  "threshold_logic": "education <= 1 AND money >= 2",
+  "text": "You go full-time at No Frills the week after school ends. The money is immediate and that matters — rent, groceries, your phone bill, your mom's phone bill. You're good at the work and your supervisor moves you to shift lead by October. It's not glamorous but it's yours. Some nights you think about whether you'll still be here in five years and the answer isn't clear. But right now the fridge is full and the lights are on and you did that. That's not nothing.",
   "next": null
   },
-  "ENDING_DROPOUT": {
-  "type": "ending",
-  "image": "home_kitchen.png",
-  "title": "Dropping Out — Pregnancy",
-  "threshold_logic": "risk >= 5 AND education <= 0",
-  "text": "You find out in November of Grade 12. You sit with it for two weeks before you tell anyone. Your mom takes it quietly — not badly, just quietly. You finish the semester but don't go back after Christmas. There's a baby by June and your whole schedule reorganizes around that one fact. Some days it's overwhelming in a way that has no bottom. Some days you look at them and everything else feels distant and small. School isn't gone forever — you know that technically. But right now forever feels like the next six hours and you're just getting through them.",
-  "next": null
-  },
-  "ENDING_MILITARY": {
+    "ENDING_MILITARY": {
   "type": "ending",
   "image": "street_outside_school.png",
   "title": "Military",
   "threshold_logic": "stress >= 4 AND education >= 2 AND risk <= 4 AND support <= 2",
   "text": "You walk into the recruitment office on a Tuesday in March and come out with a date for basic training. The structure is the part that appeals to you — somewhere to be, something expected of you, no ambiguity about what the day looks like. Basic is harder than you thought and easier than some of what you've already lived through. You send money home from your first paycheque before you spend anything on yourself. The path forward is narrow and clearly marked. After four years of making impossible tradeoffs in every direction, that feels like something close to relief.",
   "next": null
+  },
+    "ENDING_COLLEGE": {
+  "type": "ending",
+  "image": "classroom.png",
+  "title": "College / Apprenticeship — OSAP",
+  "threshold_logic": "education >= 2 AND risk <= 4 AND support >= -1",
+  "text": "You enroll in a two-year program at Fleming in the fall. OSAP covers tuition with a bit left over. You still work weekends. The commute is forty minutes each way on the bus and you use the time to get ahead on readings. It's not a dramatic turning point — nothing announces itself as the moment things changed. You had the wiring all along. You're just finally getting access to some electricity.",
+  "next": null
 },
-"ENDING_UNIVERSITY": {
+    "ENDING_CRISIS": {
+  "type": "ending",
+  "image": "street_outside_school.png",
+  "title": "Homelessness",
+  "threshold_logic": "risk >= 5 AND support <= 0 AND money <= -1",
+  "text": "It didn't happen all at once. That's the thing nobody tells you — it's a series of small steps that each made sense at the time. The couch you're sleeping on belongs to someone you met six months ago. The stuff you're taking most nights started as something to take the edge off. You still know what day it is and sometimes that feels like enough. There are numbers you could call. There are people who would still pick up. Most nights you don't reach for your phone. Most nights you just get through to morning.",
+  "next": null
+    },
+ "ENDING_UNIVERSITY": {
   "type": "ending",
   "image": "classroom.png",
   "title": "University — Scholarship",
@@ -722,20 +730,12 @@
   "text": "You get the acceptance letter on a Wednesday afternoon and read it standing in the kitchen. There's a financial aid package attached — not enough to cover everything, but enough to make it real. You're the first person in your immediate family to go. Nobody makes a big deal of it, which is somehow exactly right. You move into residence in September with two bags and a bedsheet your mom washed twice before you left. The work is harder than high school and the money pressure doesn't disappear — it just changes shape. But the options in front of you are different now than they were four years ago, and you know exactly what it cost to get here.",
   "next": null
 },
-  "ENDING_WORK": {
+    "ENDING_DROPOUT": {
   "type": "ending",
-  "image": "workplace.png",
-  "title": "Straight to Work",
-  "threshold_logic": "education <= 1 AND money >= 2",
-  "text": "You go full-time at No Frills the week after school ends. The money is immediate and that matters — rent, groceries, your phone bill, your mom's phone bill. You're good at the work and your supervisor moves you to shift lead by October. It's not glamorous but it's yours. Some nights you think about whether you'll still be here in five years and the answer isn't clear. But right now the fridge is full and the lights are on and you did that. That's not nothing.",
-  "next": null
-},
-"ENDING_COLLEGE": {
-  "type": "ending",
-  "image": "classroom.png",
-  "title": "College / Apprenticeship — OSAP",
-  "threshold_logic": "education >= 2 AND risk <= 4 AND support >= -1",
-  "text": "You enroll in a two-year program at Fleming in the fall. OSAP covers tuition with a bit left over. You still work weekends. The commute is forty minutes each way on the bus and you use the time to get ahead on readings. It's not a dramatic turning point — nothing announces itself as the moment things changed. You had the wiring all along. You're just finally getting access to some electricity.",
+  "image": "home_kitchen.png",
+  "title": "Dropping Out — Pregnancy",
+  "threshold_logic": "risk >= 5 AND education <= 0",
+  "text": "You find out in November of Grade 12. You sit with it for two weeks before you tell anyone. Your mom takes it quietly — not badly, just quietly. You finish the semester but don't go back after Christmas. There's a baby by June and your whole schedule reorganizes around that one fact. Some days it's overwhelming in a way that has no bottom. Some days you look at them and everything else feels distant and small. School isn't gone forever — you know that technically. But right now forever feels like the next six hours and you're just getting through them.",
   "next": null
 }
 }
