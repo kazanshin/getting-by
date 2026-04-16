@@ -41,7 +41,7 @@
     "scene_type_mapping": {
       "story": "main",
       "dilemma": "dilemma",
-      "consequence": "main"
+      "consequence": "small_win"
     },
 
     "special_cases": {
