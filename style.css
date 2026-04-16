@@ -81,6 +81,11 @@ body {
   backdrop-filter: blur(2px);
 }
 
+.game.welcome-mode .dialogue-box {
+  top: clamp(12px, 3vh, 24px);
+  bottom: auto;
+}
+
 .title {
   margin: 0 0 12px;
   color: var(--accent);
