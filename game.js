@@ -242,7 +242,18 @@
 
   function renderSpritesForScreen(screenId, screen) {
     clearSprites();
+// --- ADD THIS BLOCK HERE ---
+  const settingKey = imagePathToSettingKey(screen.image);
+  const settingDef = state.data.settings?.[settingKey];
+  
+  if (DEBUG_MODE) {
+    drawCollisionDebug(settingDef);
+  }
+  // ---------------------------
 
+  if (screen.type === 'ending') {
+    // ... (rest of your existing code)
+    
     if (screen.type === 'ending') {
       renderEndingSprites(screenId);
       return;
@@ -720,4 +731,31 @@
     el.error.classList.add('hidden');
     el.error.textContent = '';
   }
+  // ADD THIS AT THE BOTTOM OF YOUR FILE
+const DEBUG_MODE = true; 
+
+function drawCollisionDebug(settingDef) {
+  if (!settingDef || !settingDef.collision_map) return;
+  
+  const map = settingDef.collision_map;
+  const gridSize = settingDef.grid_size;
+  
+  map.forEach((row, y) => {
+    row.forEach((cell, x) => {
+      if (cell === 1) { 
+        const div = document.createElement('div');
+        div.style.position = 'absolute';
+        div.style.left = `${(x / gridSize.cols) * 100}%`;
+        div.style.top = `${(y / gridSize.rows) * 100}%`;
+        div.style.width = `${100 / gridSize.cols}%`;
+        div.style.height = `${100 / gridSize.rows}%`;
+        div.style.border = '1px solid rgba(255, 0, 0, 0.5)';
+        div.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
+        div.style.pointerEvents = 'none'; 
+        div.style.zIndex = '999'; // Force it to the top
+        el.sprites.appendChild(div);
+      }
+    });
+  });
+}
 })();
