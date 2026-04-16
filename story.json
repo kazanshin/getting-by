@@ -8,7 +8,7 @@
   "S02": {
     "type": "dilemma",
     "image": "/graphics/settings/school_classroom.png",
-    "text": "Your teacher passes around a sign-up sheet for a three-day trip to Algonquin. It's $180. She says deposits are due by Friday. The sheet reaches your desk.",
+    "text": "Your teacher passes around a sign-up sheet for a three-day trip to Algonquin provincial park. It's $180. She says deposits are due by Friday. The sheet reaches your desk.",
     "choices": [
       {
         "text": "Sign up and ask your mom for the money tonight.",
@@ -172,7 +172,7 @@
   "S14": {
     "type": "story",
     "image": "/graphics/settings/school_outside.png",
-    "text": "Grade 10. A friend from last year texts you on a Thursday — her older cousin is having people over, no parents, come through after school. You haven't had a reason to go anywhere in a while. You show up. There's music, someone's already laughing too loud, and a bottle of Canadian Club is sitting open on the counter.",
+    "text": "Grade 10. A friend from last year texts you on a Thursday — her older cousin is having people over, no parents, come through after school. You haven't had a reason to go anywhere in a while. You show up. There's music, someone's already laughing too loud, and a bottle of Canadian Club whisky is sitting open on the counter.",
     "next": "S15"
   },
   "S15": {
@@ -213,7 +213,7 @@
   "S17": {
     "type": "story",
     "image": "/graphics/settings/school_classroom.png",
-    "text": "Your history teacher pulls you aside after class. She says you have good instincts and she wants to put your name forward for the student leadership council. Meetings are Wednesdays after school — same shift you picked up at No Frills two months ago.",
+    "text": "Your history teacher pulls you aside after class. She says you have good instincts and she wants to put your name forward for the student leadership council. Meetings are Wednesdays after school — same shift you picked up at No Frills grocery store two months ago.",
     "next": "S18"
   },
   "S18": {
@@ -254,7 +254,7 @@
 "S20": {
   "type": "story",
   "image": "/graphics/settings/home_kitchen.png",
-  "text": "You come home and there's a letter on the counter from Ontario Works. It's open, face up. Your mom doesn't mention it when she gets in. She makes dinner and asks about your week. Later she knocks on your door and asks if you can start putting in a regular amount each month.",
+  "text": "You come home and there's a letter on the counter from the Ontario Works social assistance program. It's open, face up. Your mom doesn't mention it when she gets in. She makes dinner and asks about your week. Later she knocks on your door and asks if you can start putting in a regular amount each month.",
   "next": "S21"
 },
   "S21": {
