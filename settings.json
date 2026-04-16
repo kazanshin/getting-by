@@ -230,26 +230,26 @@
   ],
 
   "spawn_points": [
-    { "x": 10, "y": 8 },   // main entry into conversation space
-    { "x": 4, "y": 9 },    // left approach
-    { "x": 16, "y": 9 }    // right approach
+    { "x": 10, "y": 8 },   
+    { "x": 4, "y": 9 },    
+    { "x": 16, "y": 9 }   
   ],
 
   "npc_zones": {
     "high_traffic": [
-      { "x": 10, "y": 6 },  // in front of desk
+      { "x": 10, "y": 6 },  
       { "x": 9, "y": 7 },
       { "x": 11, "y": 7 }
     ],
 
     "loiter": [
-      { "x": 8, "y": 8 },   // chair area (left)
-      { "x": 12, "y": 8 },  // chair area (right)
+      { "x": 8, "y": 8 },   
+      { "x": 12, "y": 8 }, 
       { "x": 10, "y": 8 }
     ],
 
     "private": [
-      { "x": 10, "y": 2 }   // behind desk (counsellor)
+      { "x": 10, "y": 2 }   
     ]
   }
 }, 
