@@ -12,7 +12,7 @@
   };
 
   const STATS = ['education', 'money', 'stress', 'support', 'risk'];
-  const DEBUG_MODE = true;
+  const DEBUG_MODE = false;
 
   const state = {
     phase: 'boot',
