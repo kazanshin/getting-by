@@ -560,13 +560,13 @@
 "S43": {
   "type": "story",
   "image": "/graphics/settings/home_kitchen.png",
-  "text": "You're in the middle of first period when your phone buzzes under the desk. It's your mom. You step into the hall and call back. She's at the leasing office - they're processing a formal notice about missed rent. This isn't the first time something like this has been close. You know the sequence: notice, meeting, extension, scramble. You've watched her navigate it before. This time she wants you there.",
+  "text": "You're in the middle of first period when your phone buzzes under the desk. It's your dad. You step into the hall and call back.He's at the leasing office - they're processing a formal notice about missed rent. This isn't the first time something like this has been close. You know the sequence: notice, meeting, extension, scramble. You've watched him navigate it before. This time he wants you there.",
   "next": "S44"
   },
   "S44": {
     "type": "dilemma",
     "image": "/graphics/settings/school_hallway.png",
-    "text": "Your teacher is mid-lesson. Missing this class will be marked unexcused. Your mom's voice on the phone was flat in a way that means she's holding it together barely.",
+    "text": "Your teacher is mid-lesson. Missing this class will be marked unexcused. Your dad's voice on the phone was flat in a way that means he's holding it together barely.",
     "choices": [
       {
         "text": "Leave and get to the leasing office.",
@@ -589,13 +589,13 @@
   "S45A": {
     "type": "consequence",
     "image": "/graphics/settings/leasing_office.png",
-    "text": "You sit beside your mom while a property manager explains the notice in a flat, administrative tone. Having you there seems to matter — she asks better questions with you beside her. You get a two-week extension. You also get an unexcused absence that complicates your attendance record.",
+    "text": "You sit beside your dad while a property manager explains the notice in a flat, administrative tone. Having you there seems to matter — the leasing officer keeps looking at you sympathetically throughout the meeting. You get a two-week extension. You also get an unexcused absence that complicates your attendance record.",
     "next": "S46"
   },
   "S45B": {
     "type": "consequence",
     "image": "/graphics/settings/school_classroom.png",
-    "text": "You sit through the rest of class and can't follow any of it. Your mom handles it alone and gets the extension, but she doesn't tell you what was said. That night she's quieter than usual.",
+    "text": "You sit through the rest of class and can't follow any of it. Your dad handles it alone and gets the extension, but he doesn't tell you what was said. That night he's even quieter than usual.",
     "next": "S46"
   },
   "S46": {
