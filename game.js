@@ -531,7 +531,7 @@
     const rows = rect.rows;
     const cellWidth = rect.width / cols;
     const cellHeight = rect.height / rows;
-    const spriteSize = Math.max(20, Math.min(cellWidth, cellHeight) * 1.35);
+    const spriteSize = Math.max(20, Math.min(cellWidth, cellHeight) * 1.6875);
 
     const sprite = document.createElement('img');
     sprite.className = 'sprite';
