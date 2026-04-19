@@ -315,9 +315,14 @@
     });
 
     // Draw back-to-front: top rows first, lower rows after (lower rows appear in front).
+    const mapScaleMultiplier = settingKey === 'school_hallway' ? 1 : 1.5;
     resolvedSprites
       .sort((a, b) => a.pos.y - b.pos.y)
-      .forEach((entry) => drawSprite(entry.sprite, entry.pos, settingDef?.grid_size, entry.id));
+      .forEach((entry) =>
+        drawSprite(entry.sprite, entry.pos, settingDef?.grid_size, entry.id, {
+          scaleMultiplier: mapScaleMultiplier
+        })
+      );
   }
 
   function drawCollisionDebug(settingDef) {
@@ -525,13 +530,18 @@
     return tile === 1;
   }
 
-  function drawSprite(spritePath, position, gridSize, id) {
+  function drawSprite(spritePath, position, gridSize, id, options = {}) {
     const rect = getGridRect(gridSize);
     const cols = rect.cols;
     const rows = rect.rows;
     const cellWidth = rect.width / cols;
     const cellHeight = rect.height / rows;
-    const spriteSize = Math.max(20, Math.min(cellWidth, cellHeight) * 1.6875);
+    const baseSize = Math.min(cellWidth, cellHeight) * 1.6875;
+    const scaleMultiplier =
+      Number.isFinite(Number(options.scaleMultiplier)) && Number(options.scaleMultiplier) > 0
+        ? Number(options.scaleMultiplier)
+        : 1;
+    const spriteSize = Math.max(20, baseSize * scaleMultiplier);
 
     const sprite = document.createElement('img');
     sprite.className = 'sprite';
