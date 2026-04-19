@@ -12,7 +12,7 @@
   };
 
   const STATS = ['education', 'money', 'stress', 'support', 'risk'];
-  const DEBUG_MODE = false;
+  const DEBUG_MODE = true;
 
   const state = {
     phase: 'boot',
@@ -635,11 +635,134 @@
   function evaluateEnding() {
     const story = state.data.story || {};
     const endingIds = Object.keys(story).filter((id) => story[id]?.type === 'ending');
-    for (const id of endingIds) {
-      const logic = story[id]?.threshold_logic;
-      if (logic && evaluateThreshold(logic, state.stats)) return id;
+    if (endingIds.length === 0) return null;
+
+    const scored = endingIds.map((id) => {
+      const logic = story[id]?.threshold_logic || '';
+      const score = scoreEndingLogic(logic, state.stats);
+      return { id, score };
+    });
+
+    scored.sort((a, b) => compareEndingScores(a, b));
+    return scored[0]?.id || null;
+  }
+
+  function compareEndingScores(a, b) {
+    // Prefer endings that fully satisfy their logic.
+    if (a.score.allSatisfied !== b.score.allSatisfied) {
+      return a.score.allSatisfied ? -1 : 1;
     }
-    return endingIds[0] || null;
+
+    // Then prefer more satisfied conditions.
+    if (a.score.satisfiedCount !== b.score.satisfiedCount) {
+      return b.score.satisfiedCount - a.score.satisfiedCount;
+    }
+
+    // Then prefer smaller miss-distance from thresholds.
+    if (a.score.distance !== b.score.distance) {
+      return a.score.distance - b.score.distance;
+    }
+
+    // Then prefer more specific logic (more conditions).
+    if (a.score.totalConditions !== b.score.totalConditions) {
+      return b.score.totalConditions - a.score.totalConditions;
+    }
+
+    // Final deterministic tie-breaker independent of JSON ordering.
+    return a.id.localeCompare(b.id);
+  }
+
+  function scoreEndingLogic(logic, stats) {
+    const groups = String(logic || '')
+      .split(/\bOR\b/i)
+      .map((part) => part.trim())
+      .filter(Boolean);
+
+    if (groups.length === 0) {
+      return {
+        allSatisfied: false,
+        satisfiedCount: 0,
+        totalConditions: 0,
+        distance: Number.POSITIVE_INFINITY
+      };
+    }
+
+    const groupScores = groups.map((group) => scoreAndGroup(group, stats));
+    groupScores.sort((a, b) => {
+      if (a.allSatisfied !== b.allSatisfied) return a.allSatisfied ? -1 : 1;
+      if (a.satisfiedCount !== b.satisfiedCount) return b.satisfiedCount - a.satisfiedCount;
+      if (a.distance !== b.distance) return a.distance - b.distance;
+      return b.totalConditions - a.totalConditions;
+    });
+
+    return groupScores[0];
+  }
+
+  function scoreAndGroup(groupLogic, stats) {
+    const conditions = String(groupLogic)
+      .split(/\bAND\b/i)
+      .map((part) => part.trim())
+      .filter(Boolean);
+
+    if (conditions.length === 0) {
+      return {
+        allSatisfied: false,
+        satisfiedCount: 0,
+        totalConditions: 0,
+        distance: Number.POSITIVE_INFINITY
+      };
+    }
+
+    let satisfiedCount = 0;
+    let distance = 0;
+
+    conditions.forEach((condition) => {
+      const result = evaluateSingleCondition(condition, stats);
+      if (result.satisfied) satisfiedCount += 1;
+      distance += result.distance;
+    });
+
+    return {
+      allSatisfied: satisfiedCount === conditions.length,
+      satisfiedCount,
+      totalConditions: conditions.length,
+      distance
+    };
+  }
+
+  function evaluateSingleCondition(condition, stats) {
+    const parsed = String(condition).match(
+      /^\s*(education|money|stress|support|risk)\s*(>=|<=|>|<|==|=)\s*(-?\d+(?:\.\d+)?)\s*$/i
+    );
+
+    if (!parsed) {
+      return { satisfied: false, distance: Number.POSITIVE_INFINITY };
+    }
+
+    const statName = parsed[1].toLowerCase();
+    const op = parsed[2];
+    const target = Number(parsed[3]);
+    const value = Number(stats[statName] || 0);
+
+    if (Number.isNaN(target) || Number.isNaN(value)) {
+      return { satisfied: false, distance: Number.POSITIVE_INFINITY };
+    }
+
+    switch (op) {
+      case '>=':
+        return { satisfied: value >= target, distance: value >= target ? 0 : target - value };
+      case '<=':
+        return { satisfied: value <= target, distance: value <= target ? 0 : value - target };
+      case '>':
+        return { satisfied: value > target, distance: value > target ? 0 : target - value + 1 };
+      case '<':
+        return { satisfied: value < target, distance: value < target ? 0 : value - target + 1 };
+      case '=':
+      case '==':
+        return { satisfied: value === target, distance: Math.abs(value - target) };
+      default:
+        return { satisfied: false, distance: Number.POSITIVE_INFINITY };
+    }
   }
 
   function evaluateThreshold(expression, stats) {
