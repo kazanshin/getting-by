@@ -293,13 +293,23 @@
     }
 
     const used = new Set();
+    const resolvedSprites = [];
 
     entities.forEach((entity) => {
       const pos = validateOrFallbackPosition(entity.x, entity.y, settingDef, used);
       if (!pos) return;
       used.add(`${pos.x},${pos.y}`);
-      drawSprite(entity.sprite, pos, settingDef?.grid_size, entity.id || 'entity');
+      resolvedSprites.push({
+        sprite: entity.sprite,
+        pos,
+        id: entity.id || 'entity'
+      });
     });
+
+    // Draw back-to-front: top rows first, lower rows after (lower rows appear in front).
+    resolvedSprites
+      .sort((a, b) => a.pos.y - b.pos.y)
+      .forEach((entry) => drawSprite(entry.sprite, entry.pos, settingDef?.grid_size, entry.id));
   }
 
   function drawCollisionDebug(settingDef) {
@@ -375,6 +385,7 @@
 
     const used = new Set();
     const entities = endingPlacement.entities || [];
+    const resolvedSprites = [];
     console.log('ending entities', entities);
     entities.forEach((entity) => {
       const count = Math.max(1, Number(entity.count) || 1);
@@ -387,9 +398,18 @@
           console.warn(`[ending] Missing sprite for entity "${entity.id || 'unknown'}".`);
           continue;
         }
-        drawSprite(sprite, pos, endingMap.grid_size, `${entity.id || 'entity'}-${index}`);
+        resolvedSprites.push({
+          sprite,
+          pos,
+          id: `${entity.id || 'entity'}-${index}`
+        });
       }
     });
+
+    // Draw back-to-front: top rows first, lower rows after (lower rows appear in front).
+    resolvedSprites
+      .sort((a, b) => a.pos.y - b.pos.y)
+      .forEach((entry) => drawSprite(entry.sprite, entry.pos, endingMap.grid_size, entry.id));
   }
 
   function pickEndingPosition(zoneName, endingMap, used) {
