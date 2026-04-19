@@ -46,7 +46,15 @@
 
   async function init() {
     await loadAllData();
+    window.addEventListener('resize', handleResize);
     showWelcome();
+  }
+
+  function handleResize() {
+    if (!state.currentScreenId) return;
+    const current = state.data.story?.[state.currentScreenId];
+    if (!current) return;
+    renderScreen(state.currentScreenId, current);
   }
 
   async function loadAllData() {
@@ -316,9 +324,9 @@
     if (!settingDef || !Array.isArray(settingDef.collision_map)) return;
 
     const map = settingDef.collision_map;
-    const gridSize = settingDef.grid_size || { cols: 20, rows: 12 };
-    const cols = Number(gridSize.cols) || 20;
-    const rows = Number(gridSize.rows) || 12;
+    const rect = getGridRect(settingDef.grid_size);
+    const cols = rect.cols;
+    const rows = rect.rows;
 
     map.forEach((row, y) => {
       if (!Array.isArray(row)) return;
@@ -326,10 +334,10 @@
         if (cell !== 1) return;
         const div = document.createElement('div');
         div.style.position = 'absolute';
-        div.style.left = `${(x / cols) * 100}%`;
-        div.style.top = `${(y / rows) * 100}%`;
-        div.style.width = `${100 / cols}%`;
-        div.style.height = `${100 / rows}%`;
+        div.style.left = `${rect.left + (x / cols) * rect.width}px`;
+        div.style.top = `${rect.top + (y / rows) * rect.height}px`;
+        div.style.width = `${rect.width / cols}px`;
+        div.style.height = `${rect.height / rows}px`;
         div.style.border = '1px solid rgba(255, 0, 0, 0.5)';
         div.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
         div.style.pointerEvents = 'none';
@@ -518,11 +526,11 @@
   }
 
   function drawSprite(spritePath, position, gridSize, id) {
-    const cols = Number(gridSize?.cols) || 20;
-    const rows = Number(gridSize?.rows) || 12;
-    const gameRect = el.bg.getBoundingClientRect();
-    const cellWidth = gameRect.width / cols;
-    const cellHeight = gameRect.height / rows;
+    const rect = getGridRect(gridSize);
+    const cols = rect.cols;
+    const rows = rect.rows;
+    const cellWidth = rect.width / cols;
+    const cellHeight = rect.height / rows;
     const spriteSize = Math.max(20, Math.min(cellWidth, cellHeight) * 1.35);
 
     const sprite = document.createElement('img');
@@ -532,8 +540,8 @@
     sprite.style.width = `${spriteSize}px`;
     sprite.style.height = `${spriteSize}px`;
     sprite.style.objectFit = 'contain';
-    sprite.style.left = `${((position.x + 0.5) / cols) * 100}%`;
-    sprite.style.top = `${((position.y + 1) / rows) * 100}%`;
+    sprite.style.left = `${rect.left + ((position.x + 0.5) / cols) * rect.width}px`;
+    sprite.style.top = `${rect.top + ((position.y + 1) / rows) * rect.height}px`;
 
     sprite.addEventListener('error', () => {
       console.warn(`Missing sprite asset: ${spritePath}`);
@@ -541,6 +549,27 @@
     });
 
     el.sprites.appendChild(sprite);
+  }
+
+  function getGridRect(gridSize) {
+    const cols = Number(gridSize?.cols) || 20;
+    const rows = Number(gridSize?.rows) || 12;
+    const container = el.bg.getBoundingClientRect();
+    const targetAspect = cols / rows;
+    const containerAspect = container.width / Math.max(container.height, 1);
+
+    let width = container.width;
+    let height = width / targetAspect;
+
+    if (containerAspect > targetAspect) {
+      height = container.height;
+      width = height * targetAspect;
+    }
+
+    const left = (container.width - width) / 2;
+    const top = (container.height - height) / 2;
+
+    return { left, top, width, height, cols, rows };
   }
 
   function imagePathToSettingKey(path) {
