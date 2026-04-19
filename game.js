@@ -315,7 +315,7 @@
     });
 
     // Draw back-to-front: top rows first, lower rows after (lower rows appear in front).
-    const mapScaleMultiplier = settingKey === 'school_hallway' ? 1 : 1.5;
+    const mapScaleMultiplier = settingKey === 'school_hallway' ? 1.25 : 1.5;
     resolvedSprites
       .sort((a, b) => a.pos.y - b.pos.y)
       .forEach((entry) =>
