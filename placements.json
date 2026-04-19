@@ -80,17 +80,15 @@
       { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 },
 
       { "id": "parent1", "sprite": "graphics/chars/npc_parent_female.png", "x": 8, "y": 6 },
-      { "id": "parent2", "sprite": "graphics/chars/npc_parent_male.png", "x": 12, "y": 6 },
-
+     
       { "id": "sibling", "sprite": "graphics/chars/npc_sibling.png", "x": 6, "y": 8 }
     ]
   },
 
   "home_bedroom": {
     "alone": [
-      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 },
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 }
 
-      { "id": "sibling", "sprite": "graphics/chars/npc_sibling.png", "x": 14, "y": 7 }
     ]
   },
 
@@ -98,7 +96,7 @@
     "meeting": [
       { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 },
 
-      { "id": "parent2", "sprite": "graphics/chars/npc_parent_male.png", "x": 12, "y": 6 },
+      { "id": "parent2", "sprite": "graphics/chars/npc_parent_female.png", "x": 12, "y": 6 },
 
       { "id": "agent", "sprite": "graphics/chars/npc_work_boss.png", "x": 10, "y": 3 }
     ]
