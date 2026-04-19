@@ -559,13 +559,13 @@
   },
 "S43": {
   "type": "story",
-  "image": "/graphics/settings/home_kitchen.png",
+  "image": "/graphics/settings/school_classroom.png",
   "text": "You're in the middle of first period when your phone buzzes under the desk. It's your mom. You step into the hall and call back. She's at the leasing office - they're processing a formal notice about missed rent. This isn't the first time something like this has been close. You know the drill: notice, meeting, extension, scramble. You've watched her navigate it before. This time she wants you there.",
   "next": "S44"
   },
   "S44": {
     "type": "dilemma",
-    "image": "/graphics/settings/school_hallway.png",
+    "image": "/graphics/settings/school_classroom.png",
     "text": "Your teacher is mid-lesson. Missing this class will be marked unexcused. Your mom's voice on the phone was flat in a way that means she's holding it together barely.",
     "choices": [
       {
