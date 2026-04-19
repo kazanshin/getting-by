@@ -41,7 +41,17 @@
       { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 8 },
 
       { "id": "police", "sprite": "graphics/chars/npc_police.png", "x": 6, "y": 6 },
-      { "id": "recruiter", "sprite": "graphics/chars/npc_military_recruiter.png", "x": 14, "y": 6 }
+
+      { "id": "student1", "sprite": "graphics/chars/npc_student_average.png", "x": 12, "y": 6 },
+      { "id": "student2", "sprite": "graphics/chars/npc_student_bad_influence.png", "x": 14, "y": 7 }
+    ]
+  },
+
+  "school_guidance_office": {
+    "session": [
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 8 },
+
+      { "id": "counselor", "sprite": "graphics/chars/npc_school_counselor.png", "x": 10, "y": 4 }
     ]
   },
 
@@ -70,13 +80,17 @@
       { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 },
 
       { "id": "parent1", "sprite": "graphics/chars/npc_parent_female.png", "x": 8, "y": 6 },
-      { "id": "parent2", "sprite": "graphics/chars/npc_parent_male.png", "x": 12, "y": 6 }
+      { "id": "parent2", "sprite": "graphics/chars/npc_parent_male.png", "x": 12, "y": 6 },
+
+      { "id": "sibling", "sprite": "graphics/chars/npc_sibling.png", "x": 6, "y": 8 }
     ]
   },
 
   "home_bedroom": {
     "alone": [
-      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 }
+      { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 },
+
+      { "id": "sibling", "sprite": "graphics/chars/npc_sibling.png", "x": 14, "y": 7 }
     ]
   },
 
