@@ -2,7 +2,7 @@
   "S01": {
     "type": "story",
     "image": "/graphics/settings/school_hallway.png",
-    "text": "First week of high school. The hallway is loud and everyone seems to already know where they're going. A group nearby is talking about the weekend — someone's older brother is driving them to Costco to stock up for a party. You smile like you're listening.",
+    "text": "First week of high school. The hallway is loud and everyone seems to already know where they're going. A group nearby is talking about the weekend - someone's older brother is driving them to Costco to stock up for a party. You smile like you're listening.",
     "next": "S02"
   },
   "S02": {
@@ -84,13 +84,13 @@
   "S07": {
     "type": "story",
     "image": "/graphics/settings/school_classroom.png",
-    "text": "You've missed three homework submissions in the last two weeks. It's not that you don't get it — there just isn't a good time or place to do it. The kitchen table has bills on it most nights.",
+    "text": "You've missed three homework submissions in the last two weeks. It's not that you don't get it - there just isn't a good time or place to do it. The kitchen table has bills on it most nights.",
     "next": "S08"
   },
   "S08": {
     "type": "dilemma",
     "image": "/graphics/settings/school_classroom.png",
-    "text": "Your English teacher keeps you after class. She asks directly — is everything okay at home? She's not unkind about it. She's waiting for an answer.",
+    "text": "Your English teacher keeps you after class. She asks directly - is everything okay at home? She's not unkind about it. She's waiting for an answer.",
     "choices": [
       {
         "text": "Tell her it's been hard at home lately.",
@@ -113,7 +113,7 @@
   "S09A": {
     "type": "consequence",
     "image": "/graphics/settings/school_classroom.png",
-    "text": "She listens without interrupting. She tells you about a quiet room you can use after school and says she'll give you extensions when you need them. Walking out you feel lighter — and a little exposed.",
+    "text": "She listens without interrupting. She tells you about a quiet room you can use after school and says she'll give you extensions when you need them. Walking out you feel lighter, and a little exposed.",
     "next": "S10"
   },
   "S09B": {
@@ -166,19 +166,19 @@
   "S13": {
     "type": "story",
     "image": "/graphics/settings/home_bedroom.png",
-    "text": "Grade 9 is almost done. Nothing collapsed, but nothing felt easy either. Every week had a moment where something had to give — school, home, money, or just your own energy. You're already tired and it's only been one year.",
+    "text": "Grade 9 is almost done. Nothing collapsed, but nothing felt easy either. Every week had a moment where something had to give: school, home, money, or just your own energy. You're already tired and it's only been one year.",
     "next": "S14"
   },
   "S14": {
     "type": "story",
     "image": "/graphics/settings/school_outside.png",
-    "text": "Grade 10. A friend from last year texts you on a Thursday — her older cousin is having people over, no parents, come through after school. You haven't had a reason to go anywhere in a while. You show up. There's music, someone's already laughing too loud, and a bottle of Canadian Club whisky is sitting open on the counter.",
+    "text": "Grade 10. A friend from last year texts you on a Thursday - her older cousin is having people over, no parents, come through after school. You haven't had a reason to go anywhere in a while. You show up. There's music, someone's already laughing too loud, and a bottle of Canadian Club whisky is sitting open on the counter.",
     "next": "S15"
   },
   "S15": {
     "type": "dilemma",
     "image": "/graphics/settings/party_house.png",
-    "text": "Someone presses a cup into your hand like it's already decided. Everyone around you is relaxed. Nobody's watching you specifically — but you notice that.",
+    "text": "Someone presses a cup into your hand like it's already decided. Everyone around you is relaxed. Nobody's watching you specifically, but you notice that.",
     "choices": [
       {
         "text": "Take the cup and stay.",
@@ -207,13 +207,13 @@
   "S16B": {
     "type": "consequence",
     "image": "/graphics/settings/school_outside.png",
-    "text": "You leave around nine. The walk home is quiet. When the group chat goes active later that night you're not in it — you don't know when that happened.",
+    "text": "You leave around nine. The walk home is quiet. When the group chat goes active later that night you're not in it - you don't know when that happened.",
     "next": "S17"
   },
   "S17": {
     "type": "story",
     "image": "/graphics/settings/school_classroom.png",
-    "text": "Your history teacher pulls you aside after class. She says you have good instincts and she wants to put your name forward for the student leadership council. Meetings are Wednesdays after school — same shift you picked up at No Frills grocery store two months ago.",
+    "text": "Your history teacher pulls you aside after class. She says you have good instincts and she wants to put your name forward for the student leadership council. Meetings are Wednesdays after school - same shift you picked up at No Frills grocery store two months ago.",
     "next": "S18"
   },
   "S18": {
@@ -304,7 +304,7 @@
     "text": "You managed to add two paragraphs before losing connection. The rest of the group kept going without you. There's a message in the chat asking where you were.",
     "choices": [
       {
-        "text": "Reply and explain — work ran late, internet was down.",
+        "text": "Reply and explain: work ran late, internet was down.",
         "effects": {
           "support": 1,
           "stress": 1
@@ -324,7 +324,7 @@
   "S25A": {
     "type": "consequence",
     "image": "/graphics/settings/school_classroom.png",
-    "text": "One person in the group is understanding. Another one isn't — you can tell by the way she responds in class the next day. The project gets submitted but your section is thin and everyone knows it.",
+    "text": "One person in the group is understanding. Another one isn't - you can tell by the way she responds in class the next day. The project gets submitted but your section is thin and everyone knows it.",
     "next": "S26"
   },
   "S25B": {
@@ -383,7 +383,7 @@
   "S30": {
     "type": "story",
     "image": "/graphics/settings/school_outside.png",
-    "text": "Someone you know from the neighborhood — not a close friend, just someone who's always around — tells you he's been making good money. Delivering packages for someone, no questions asked, cash same day. He says it's easy and nobody bothers you.",
+    "text": "Someone you know from the neighborhood - not a close friend, just someone who's always around tells you he's been making good money. Delivering packages for someone, no questions asked, cash same day. He says it's easy and nobody bothers you.",
     "next": "S31"
   },
   "S31": {
@@ -447,7 +447,7 @@
         "next": "S35A"
       },
       {
-        "text": "Miss a few more — you're too far behind to catch up anyway.",
+        "text": "Miss a few more - you're too far behind to catch up anyway.",
         "effects": {
           "education": -2,
           "stress": -1,
@@ -519,7 +519,7 @@
   "S40": {
     "type": "story",
     "image": "/graphics/settings/school_hallway.png",
-    "text": "Grade 12. People around you are talking about moving out, getting serious with someone, making decisions without checking with anyone first. Everything feels closer than it did — graduation, whatever comes after, the gap between where you are and where you thought you'd be by now.",
+    "text": "Grade 12. People around you are talking about moving out, getting serious with someone, making decisions without checking with anyone first. Everything feels closer than it did: graduation, whatever comes after, the gap between where you are and where you thought you'd be by now.",
     "next": "S41"
   },
   "S41": {
@@ -560,7 +560,7 @@
 "S43": {
   "type": "story",
   "image": "/graphics/settings/home_kitchen.png",
-  "text": "You're in the middle of first period when your phone buzzes under the desk. It's your mom. You step into the hall and call back. She's at the leasing office — they're processing a formal notice about missed rent. This isn't the first time something like this has been close. You know the sequence: notice, meeting, extension, scramble. You've watched her navigate it before. This time she wants you there.",
+  "text": "You're in the middle of first period when your phone buzzes under the desk. It's your mom. You step into the hall and call back. She's at the leasing office - they're processing a formal notice about missed rent. This isn't the first time something like this has been close. You know the sequence: notice, meeting, extension, scramble. You've watched her navigate it before. This time she wants you there.",
   "next": "S44"
   },
   "S44": {
@@ -601,7 +601,7 @@
   "S46": {
     "type": "story",
     "image": "/graphics/settings/school_hallway.png",
-    "text": "Two weeks before graduation, the office calls you in. You're twelve community service hours short. Without them you can't walk at the ceremony. The only option left is a weekend volunteer shift — same weekend you're scheduled for a full two-day shift at No Frills that you already told your supervisor you'd cover.",
+    "text": "Two weeks before graduation, the office calls you in. You're twelve community service hours short. Without them you can't walk at the ceremony. The only option left is a weekend volunteer shift: the same weekend you're scheduled for a full two-day shift at No Frills that you already told your supervisor you'd cover.",
     "next": "S47"
   },
   "S47": {
@@ -636,19 +636,19 @@
   "S48B": {
     "type": "consequence",
     "image": "/graphics/settings/workplace.png",
-    "text": "You work both days and make the money. The school sends a letter confirming you won't be walking at graduation. You read it once and put it in a drawer.",
+    "text": "You work both days and make the money. The school sends a letter confirming you won't be walking at graduation. You read it once and put it in a drawer. Maybe you can skip class a couple days and help your elderly neighbor.",
     "next": "S49"
   },
   "S49": {
     "type": "story",
     "image": "/graphics/settings/home_kitchen.png",
-    "text": "Your mom loses her job three weeks before the end of school. She tells you at the kitchen table, matter-of-factly, like she's already made peace with it. The bills are immediate. There's talk about the apartment. One night she sits you down and says she needs real help — not just some of your pay, but consistent, reliable help. She doesn't say what that means for your plans. She doesn't have to.",
+    "text": "Your mom loses her job three weeks before the end of school. She tells you at the kitchen table, matter-of-factly, like she's already made peace with it. The bills are immediate. There's talk about the apartment. One night she sits you down and says she needs real help. Not just some of your pay, but consistent, reliable help. She doesn't say what that means for your plans. She doesn't have to.",
     "next": "S50"
   },
   "S50": {
     "type": "dilemma",
     "image": "/graphics/settings/home_kitchen.png",
-    "text": "You've been accepted somewhere — a program, a plan, something that requires you to leave or commit fully. Staying means being here, contributing, keeping things from falling apart. Leaving means moving forward, but the apartment situation doesn't get better without you.",
+    "text": "You've been accepted somewhere: a program, a plan, something that requires you to leave or commit fully. Staying means being here, contributing, keeping things from falling apart. Leaving means moving forward, but the apartment situation doesn't get better without you.",
     "choices": [
       {
         "text": "Stay and help hold things together.",
@@ -683,7 +683,7 @@
   "S52": {
     "type": "story",
     "image": "/graphics/settings/school_outside.png",
-    "text": "Grade 12 is done. Whatever happens next depends on every small decision that got you here — the shifts you worked, the classes you stayed for, the things you said yes to and the things you didn't. The city looks the same. You're not exactly the same.",
+    "text": "Grade 12 is done. Whatever happens next depends on every small decision that got you here: the shifts you worked, the classes you stayed for, the things you said yes to and the things you didn't. The city looks the same. You're not exactly the same.",
     "next": "ENDING_CHECK"
   },
 "ENDING_CHECK": {
@@ -692,31 +692,31 @@
 },
    "ENDING_UNIVERSITY": {
   "type": "ending",
-  "image": "classroom.png",
+  "image": "/graphics/endings/ending_university.png",
   "title": "University — Scholarship",
   "threshold_logic": "education >= 6 AND risk <= 2",
-  "text": "You get the acceptance letter on a Wednesday afternoon and read it standing in the kitchen. There's a financial aid package attached — not enough to cover everything, but enough to make it real. You're the first person in your immediate family to go. Nobody makes a big deal of it, which is somehow exactly right. You move into residence in September with two bags and a bedsheet your mom washed twice before you left. The work is harder than high school and the money pressure doesn't disappear — it just changes shape. But the options in front of you are different now than they were four years ago, and you know exactly what it cost to get here.",
+  "text": "You get the acceptance letter on a Wednesday afternoon and read it standing in the kitchen. There's a financial aid package attached - not enough to cover everything, but enough to make it real. You're the first person in your immediate family to go. Nobody makes a big deal of it, which is somehow exactly right. You move into residence in September with two bags and a bedsheet your mom washed twice before you left. The work is harder than high school and the money pressure doesn't disappear - it just changes shape. But the options in front of you are different now than they were four years ago, and you know exactly what it cost to get here.",
   "next": null   
   },
   "ENDING_COLLEGE": {
   "type": "ending",
-  "image": "classroom.png",
+  "image": "/graphics/endings/ending_college.png",
   "title": "College / Apprenticeship — OSAP",
   "threshold_logic": "education >= 2 AND risk <= 4 AND support >= -1",
-  "text": "You enroll in a two-year program at Fleming in the fall. OSAP covers tuition with a bit left over. You still work weekends. The commute is forty minutes each way on the bus and you use the time to get ahead on readings. It's not a dramatic turning point — nothing announces itself as the moment things changed. You had the wiring all along. You're just finally getting access to some electricity.",
+  "text": "You enroll in a two-year program at Sir Sandford Fleming College in the fall. OSAP covers tuition with a bit left over. You still work weekends. The commute is forty minutes each way on the bus and you use the time to get ahead on readings. It's not a dramatic turning point - nothing announces itself as the moment things changed. You had the wiring all along. You're just finally getting access to some electricity.",
   "next": null
   },
     "ENDING_MILITARY": {
   "type": "ending",
-  "image": "street_outside_school.png",
+  "image": "/graphics/endings/ending_military.png",
   "title": "Military",
   "threshold_logic": "education >= 1 AND education <= 3 AND money <= 0 AND risk <= 3",
-  "text": "You walk into the recruitment office on a Tuesday in March and come out with a date for basic training. The structure is the part that appeals to you — somewhere to be, something expected of you, no ambiguity about what the day looks like. Basic is harder than you thought and easier than some of what you've already lived through. You send money home from your first paycheque before you spend anything on yourself. The path forward is narrow and clearly marked. After four years of making impossible tradeoffs in every direction, that feels like something close to relief.",
+  "text": "You walk into the recruitment office on a Tuesday in June and come out with a date for basic training. The structure is the part that appeals to you — somewhere to be, something expected of you, no ambiguity about what the day looks like. Basic is harder than you thought and easier than some of what you've already lived through. You send money home from your first paycheque before you spend anything on yourself. The path forward is narrow and clearly marked. After four years of making impossible tradeoffs in every direction, that feels like something close to relief.",
   "next": null
 },
    "ENDING_WORK": {
   "type": "ending",
-  "image": "workplace.png",
+  "image": "/graphics/endings/ending_work.png",
   "title": "Straight to Work",
   "threshold_logic": "education <= 1 AND money >= 2",
   "text": "You go full-time at No Frills the week after school ends. The money is immediate and that matters — rent, groceries, your phone bill, your mom's phone bill. You're good at the work and your supervisor moves you to shift lead by October. It's not glamorous but it's yours. Some nights you think about whether you'll still be here in five years and the answer isn't clear. But right now the fridge is full and the lights are on and you did that. That's not nothing.",
@@ -725,7 +725,7 @@
     },
     "ENDING_CRISIS": {
   "type": "ending",
-  "image": "street_outside_school.png",
+  "image": "/graphics/endings/ending_crisis.png",
   "title": "Homelessness",
   "threshold_logic": "risk >= 6 AND support <= -1 AND money <= -1",
   "text": "It didn't happen all at once. That's the thing nobody tells you — it's a series of small steps that each made sense at the time. The couch you're sleeping on belongs to someone you met six months ago. The stuff you're taking most nights started as something to take the edge off. You still know what day it is and sometimes that feels like enough. There are numbers you could call. There are people who would still pick up. Most nights you don't reach for your phone. Most nights you just get through to morning.",
@@ -733,10 +733,10 @@
  },
    "ENDING_DROPOUT": {
   "type": "ending",
-  "image": "home_kitchen.png",
-  "title": "Dropping Out — Pregnancy",
+  "image": "/graphics/endings/ending_bedroom.png",
+  "title": "Dropping Out",
   "threshold_logic": "risk >= 5 AND education <= 0",
-  "text": "You find out in November of Grade 12. You sit with it for two weeks before you tell anyone. Your mom takes it quietly — not badly, just quietly. You finish the semester but don't go back after Christmas. There's a baby by June and your whole schedule reorganizes around that one fact. Some days it's overwhelming in a way that has no bottom. Some days you look at them and everything else feels distant and small. School isn't gone forever — you know that technically. But right now forever feels like the next six hours and you're just getting through them.",
+  "text": "You stop going mid-June. Not a decision exactly, just one absence that becomes two that becomes a month. You knew you wouldn't graduate, so what does it matter? You're still at No Frills, picking up whatever shifts you can get. In the fall a supervisor position opens up and you put your name in. Your manager calls you into the break room and tells you they need someone with a diploma minimum, preferably more. She's not unkind about it. You nod and go back to stocking shelves. The position goes to a co-worker a couple years older than you. You knew the job. You knew it better than they did.",
   "next": null
   }
 }
