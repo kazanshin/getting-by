@@ -98,6 +98,8 @@
     "meeting": [
       { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 7 },
 
+      { "id": "parent2", "sprite": "graphics/chars/npc_parent_male.png", "x": 12, "y": 6 },
+
       { "id": "agent", "sprite": "graphics/chars/npc_work_boss.png", "x": 10, "y": 3 }
     ]
   }
