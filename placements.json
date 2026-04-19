@@ -51,7 +51,7 @@
     "session": [
       { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 8 },
 
-      { "id": "counselor", "sprite": "graphics/chars/npc_school_counsellor.png", "x": 10, "y": 4 }
+      { "id": "counselor", "sprite": "graphics/chars/npc_school_counselor.png", "x": 10, "y": 4 }
     ]
   },
 
