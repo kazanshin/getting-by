@@ -1,7 +1,7 @@
 {
 "school_hallway": {
   "background": "graphics/settings/school_hallway.png",
-  "grid_size": { "cols": 20, "rows": 5 },
+  "grid_size": { "cols": 20, "rows": 12 },
 
 "collision_map": [ 
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], 
