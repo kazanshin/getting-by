@@ -503,13 +503,15 @@
     const gameRect = el.bg.getBoundingClientRect();
     const cellWidth = gameRect.width / cols;
     const cellHeight = gameRect.height / rows;
-    const spriteWidth = Math.max(20, Math.min(cellWidth, cellHeight) * 0.9);
+    const spriteSize = Math.max(20, Math.min(cellWidth, cellHeight) * 0.9);
 
     const sprite = document.createElement('img');
     sprite.className = 'sprite';
     sprite.src = normalizePath(spritePath);
     sprite.alt = id;
-    sprite.style.width = `${spriteWidth}px`;
+    sprite.style.width = `${spriteSize}px`;
+    sprite.style.height = `${spriteSize}px`;
+    sprite.style.objectFit = 'contain';
     sprite.style.left = `${((position.x + 0.5) / cols) * 100}%`;
     sprite.style.top = `${((position.y + 1) / rows) * 100}%`;
 
