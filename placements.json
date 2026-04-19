@@ -47,7 +47,7 @@
     ]
   },
 
-  "school_guidance_office": {
+  "school_counselors_office": {
     "session": [
       { "id": "player", "sprite": "graphics/chars/player_character.png", "x": 10, "y": 8 },
 
