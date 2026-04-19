@@ -427,7 +427,11 @@
     // Draw back-to-front: top rows first, lower rows after (lower rows appear in front).
     resolvedSprites
       .sort((a, b) => a.pos.y - b.pos.y)
-      .forEach((entry) => drawSprite(entry.sprite, entry.pos, endingMap.grid_size, entry.id));
+      .forEach((entry) =>
+        drawSprite(entry.sprite, entry.pos, endingMap.grid_size, entry.id, {
+          scaleMultiplier: 1.5
+        })
+      );
   }
 
   function pickEndingPosition(zoneName, endingMap, used) {
