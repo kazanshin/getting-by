@@ -523,7 +523,7 @@
     const gameRect = el.bg.getBoundingClientRect();
     const cellWidth = gameRect.width / cols;
     const cellHeight = gameRect.height / rows;
-    const spriteSize = Math.max(20, Math.min(cellWidth, cellHeight) * 0.9);
+    const spriteSize = Math.max(20, Math.min(cellWidth, cellHeight) * 1.35);
 
     const sprite = document.createElement('img');
     sprite.className = 'sprite';
