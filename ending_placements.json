@@ -119,12 +119,6 @@
         {
           "id": "player",
           "zone": "center"
-        },
-        {
-          "id": "baby",
-          "sprite": "graphics/chars/npc_baby.png",
-          "zone": "side",
-          "count": 1
         }
       ]
     }
