@@ -736,7 +736,7 @@
   "image": "/graphics/endings/ending_bedroom.png",
   "title": "Dropping Out",
   "threshold_logic": "risk >= 5 AND education <= 0",
-  "text": "You stop going mid-June. Not a decision exactly, just one absence that becomes two that becomes a month. You knew you wouldn't graduate, so what does it matter? You're still at No Frills, picking up whatever shifts you can get. In the fall a supervisor position opens up and you put your name in. Your manager calls you into the break room and tells you they need someone with a diploma minimum, preferably more. She's not unkind about it. You nod and go back to stocking shelves. The position goes to a co-worker a couple years older than you. You knew the job. You knew it better than they did.",
+  "text": "You stop going mid-June. Not a decision exactly, just one absence that becomes two that becomes a month. You knew you wouldn't graduate, so what does it matter? You're still at No Frills, picking up whatever shifts you can get. In the fall a supervisor position opens up and you put your name in. Your manager calls you into the break room and tells you they need someone with a diploma minimum, preferably more. She says it matter of fact without judgement. You nod and go back to stocking shelves. The position goes to a co-worker a couple years older than you. But you knew the job. You knew it better than they did.",
   "next": null
   }
 }
